@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<head>
+</head>
+
+
+
+<body>
+	<canvas id="canvas" height="500" width="500"
+						  style="border:1px solid #c3c3c3;">
+	</canvas>
+<!-- style="border:1px solid #c3c3c3;"-->
+	<canvas id="canvas2" height="500" width="500"
+			style="display:none">
+
+	</canvas>
+
+
+	<p > Write your command</p>
+
+
+
+	<input id="command" type="text">
+	<input id="value" type="number">
+	<span class="nowrap" id="warning" style=" visibility: hidden; color:red"> Unknown command!</span>
+
+	<script src="turtle.js"></script>
+	<script src="interface.js"></script>
+	<script src="3d.js"></script>
+
+	<br/>
+	<button onclick="turtle.go(10); redraw();">go 10</button>
+	<button onclick="turtle.go(50); redraw();">go 50</button>
+	<button onclick="turtle.go(100); redraw();">go 100</button>
+	<br/>
+	<button onclick="turtle.turn(90); redraw();">turn 90</button>
+	<button onclick="turtle.turn(180); redraw();">turn 180</button>
+	<br/>
+	<button onclick="turtle.turnZ(90); redraw();">turnZ 90</button>
+	<button onclick="turtle.turnZ(180); redraw();">turnZ 180</button>
+</body>
+

@@ -1,0 +1,454 @@
+<html><head>
+    <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+            body {background-color:#FFFFFF; color:#555555;}
+            </style>
+    <style type="text/css"></style></head>
+    <body>
+    <canvas id="canvas" width="900" height="520" style="border:1px solid #d3d3d3;">Your browser does not support HTML5 canvas. </canvas>
+    <canvas id="canvas2" height="500" width="500" style="display:none"> </canvas>
+    <input id="command" type="text">
+    <input id="value" type="number">
+    </br>
+    <button onclick="step(10);">FORWARD(10)</button>
+    <button onclick="step(100);">FORWARD(100)</button>
+    </br>
+    <button onclick="angle(15);">ANGLE_2D(15)</button>
+    <button onclick="angle(90);">ANGLE_2D(90)</button>
+    <button onclick="angle(180);">ANGLE_2D(180)</button>
+    </br>
+    <button onclick="angleZ(15);">ANGLE_3D_Z(15)</button>
+    <button onclick="angleZ(90);">ANGLE_3D_Z(90)</button>
+    <button onclick="angleZ(180);">ANGLE_3D_Z(180)</button>
+    </br>
+    <button onclick="test1()";>TEST_1 - 3D SPRING</button>
+     </br>
+    <button onclick="test2()";>TEST_2 - 3D FRACTAL</button>
+     </br>
+    <button onclick="test3()";>TEST_3 - BREAD</button>
+     </br>
+    <button onclick="test4()";>TEST_4 - BALANCED_STICK</button>
+    </br>
+    <button onclick="test5()";>TEST_5 - 3D CROSS</button>
+    </br>
+    <button onclick="test6()";>TEST_6 - 3D HARMONY</button>
+    </br>
+    <button onclick="test7()";>TEST_7 - 3D HARMONY</button>
+    </br>
+    <button onclick="test8()";>TEST_8 - 3D ROLL</button>
+    </br>
+    <button onclick="test9()";>TEST_9 - 3D SPRING</button>
+    </br>
+    <button onclick="test10()";>TEST_10 - 3D</button>
+    <script type="text/javascript">
+     
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var canvas2 = document.getElementById("canvas2");
+    var ctx2 = canvas.getContext("2d");
+    
+    var sin=Math.sin;
+    var cos=Math.cos;
+    var log=Math.log;
+    var Pi=Math.PI;
+    
+    var commandField = document.getElementById("command");
+    var valueField = document.getElementById("value");
+    var command, value;
+    
+    var xMin = -100;
+    var xMax = 100;
+    var yMin = -100;
+    var yMax = 100;
+    
+    function step( d ){
+        turtle.go(d);
+        redraw();
+    }
+    
+    function angle( a ){
+        turtle.turn( a );
+    }
+    
+    function angleZ( a ){
+        turtle.turnZ(a);
+    }
+    
+    function f2i(value) {
+        return value | 0;
+    }
+    /************************/
+    function test1(){
+        clearScreen(ctx);
+        for(var j=0; j<=20; j++){
+            for(var i=0; i<=255; i++){
+                angle(33);
+                step(5);
+            }
+            angleZ(2);
+            step(10);
+            angle(i%2);
+        }
+    }
+    
+    function test2(){
+        clearScreen(ctx);
+        for(var i=0; i<=1000; i++){
+            angle(i%360);
+            step(i%4);
+            if(i%2){
+                angleZ(90);
+                step(i%10);
+            }
+        }
+    }
+    
+    function test3(){
+        clearScreen(ctx);
+        for(var i=0; i<=5; i++){
+            for(var x=0; x<=5; x++){
+                for(var y=0; y<=5; y++){
+                    for(var z=0; z<=5; z++){
+                        angle(z*2);
+                    }
+                    step(y*20);
+                }
+                angleZ(x*10);
+            }
+            step(10);
+        }
+    }
+    
+    function test4(){
+        clearScreen(ctx);
+        for(var i=0; i<=1000; i++){
+            angle(i); angleZ(i);
+            step(2);
+        }
+    }
+    function m(x){
+        step(x);angle(90);angleZ(90);
+    }
+    function o(){
+        step(10);angle(180);step(10);angleZ(90);
+    }
+    function c(){
+        step(10);angle(90);step(10);angleZ(90);
+    }
+    function test5(){
+        clearScreen(ctx); clearScreen(ctx2);
+        c();c();c();step(10);
+        o();c();c();
+    }
+    
+    function test6(){
+        o();o();
+        c();c(); o();
+    }
+    
+    function test7(){
+        for(var j=0; j<=5; j++){
+            for(var i=0; i<=360; i+=15){
+                step(2);angle(15);
+            }
+            angle(90);angle(90);angle(90);
+            angleZ(15);
+            step(j);
+        }
+    }
+    function test82(x){
+        for(var i=0; i<=5; i++){
+            step(10); angleZ(90); angle(45);
+        }
+    }
+    function test81(x){
+        for(var i=0; i<=5; i++){
+            step(5); angleZ(90); test82(i);
+        }
+    }
+    function test8(){
+        for(var i=0; i<=100; i++){
+            step(5); angle(5); test81(i);
+        }
+    }
+    
+    
+    function test91(){
+        for(var i=0; i<=120; i++){
+            step(1); angle(3);
+        }
+        angleZ(1);step(1);
+    }
+    function test9(){
+        for(var i=0; i<=50; i++){
+            test91();
+        }
+    }
+    
+    function test101(){
+        step(10);
+    }
+    /************************/
+    Cursor = function(tag) {
+            this.dir = 0;
+            this.dirZ = 0;
+            this.dir2d = true;
+            this.x = 0;
+            this.y = 0;
+            this.z = 0;
+            this.tag = document.getElementById(tag) || tag;
+            this.canvas = this.tag.getContext("2d");
+        };
+        
+    Cursor.prototype = {
+        turn: function(deg) {
+                this.dir2d = true;
+                this.dir += deg;
+                this.dir = this.dir % 360;
+                return this;
+            },
+        turnZ: function(deg) {
+            console.log("deg="+deg);
+            console.log("dir2d="+this.dir2d);
+            console.log("dirZ="+this.dirZ);
+                this.dir2d = false;
+                this.dirZ += deg;
+                this.dirZ = this.dirZ % 360;
+                return this;
+            },
+        go: function(r) {
+                var a = this.toRad(this.dir);
+                var b = this.toRad(this.dirZ);
+                console.log("a and dir="+a+" "+this.dir);
+                console.log("b and dirZ="+b+" "+this.dirZ);
+                if(this.dir2d) {
+                    this.x += r * cos(a);
+                    this.y += r * sin(a);
+                }
+                else{
+                    this.z += r * sin(b);
+                    this.y += r * cos(a);
+                    this.x += r * sin(a);
+                }
+                console.log("x:"+turtle.x+" y:"+turtle.y+" z:"+turtle.z);
+                points[points.length] = [turtle.x, turtle.y, turtle.z];
+                return this;
+            },
+        rad: Pi / 180.0,
+            toRad: function(d) {
+                return d * this.rad;
+            }
+        };
+        
+    
+    var turtle = new Cursor("canvas");
+    var points =[[0, 0, 0]];
+    
+    try{turtle.x = points[points.length][0];}catch(e){}
+    try{turtle.y = points[points.length][1];}catch(e){}
+    try{turtle.z = points[points.length][2];}catch(e){}
+    
+    var readCommand = function(){
+        command = commandField.value;
+        value   = valueField.value;
+        switch(command){
+            
+            case("step"):
+            step(value);
+            break;
+            
+            case("angle"):
+            value = parseInt(value,10)
+            while(value < 0)
+            value += 360;
+            angle(value);
+            break;
+            
+            case("angleZ"):
+            value = parseInt(value,10)
+            while(value < 0)
+            value += 360;
+            angleZ(value);
+            break;
+            
+            default:
+            console.log("default");
+        }
+        clearInput();
+    }
+    
+    var clearInput = function(){
+        commandField.value = "";
+        valueField.value = "";
+        command = "";
+        value = "";
+    }
+    
+    function transpose(point,axis){
+        if(axis == "x"){
+            return (point-xMin)/(xMax-xMin)*(ctx.canvas.width);
+        }
+        if(axis == "y"){
+            return ctx.canvas.height-(point-yMin)/(yMax-yMin)*(ctx.canvas.height);
+        }
+        return point;
+    }
+    
+    /*function transpose(point, axis){
+        if(axis == "x"){
+            return (point-xMin)/(xMax-xMin)*(ctx.canvas.width);
+        }
+        if(axis == "y"){
+            return ctx.canvas.height-(point-yMin)/(yMax-yMin)*(ctx.canvas.height);
+        }
+        return point;
+    }*/
+    
+    
+    /*// perspective with eyex shift for stereoscopy
+    var perspective= function(eyex, eyez, screen_z, x,z)
+    {
+        return ( eyex+(screen_z-eyez)*(x-eyex)/(z-eyez) );
+        
+    }*/
+    
+    // (x,y) rotated by angle is ( xrotate(x,y, angle), yrotate(x,y, angle) )
+    var xrotate= function (x,y, angle)
+    {
+        return(x*cos(angle)-y*sin(angle));
+    }
+    
+    var yrotate= function (x,y, angle)
+    {
+        return(y*cos(angle)+x*sin(angle));
+    }
+    
+    // screen parameters: screen displays the rectangle [rminx,rmaxx] x [rminy,rmaxy] of R x R
+    var rpixel=0.005; // size of pixel
+    var rminx=-rpixel*ctx.canvas.width/2;
+    var rmaxx= rpixel*ctx.canvas.width/2;
+    var rminy=-rpixel*ctx.canvas.height/2;
+    var rmaxy= rpixel*ctx.canvas.height/2;
+    
+    var Xd= 0, Yd= 1, Zd= 2; // dimmensions
+    
+    // parameters for stereoscopy
+    var eyeDistance=7;
+    var leftEye=[-eyeDistance/2, 0, 40];
+    var rightEye=[eyeDistance/2, 0, 40];
+    var screen_z= 0.0;
+    var rightColor="rgb(0,0,255)";
+    var leftColor ="rgb(127,0,0)";
+    
+    
+    // we are drawing image of a function f: [xmin,xmax] x [ymin,ymax] -> R x R x R,
+    // where f(x,y)= ( fx(x,y), fy(x,y), fz(x,y) )
+    var xmin=-1;
+    var xmax= 1;
+    var ymin=-1;
+    var ymax= 1;
+    
+    // the image of the function is rotated horizontaly by ALPHA and verticaly by BETA
+    var ALPHA = 0;
+    var BETA  = 0;
+    
+    // precision of the graph
+    var stepX=0.04;
+    var stepY=0.04;
+    
+    var draw=function(ctx, colorString, eye) {
+        var x,y;
+        var ffx, ffy, ffz, fffx, fffy, fffz;
+        ctx.strokeStyle =colorString;
+        fffx=points[0][0]; fffy=points[0][1]; ffz= points[0][2];
+        // horizontal rotation by ALPHA
+        ffx= xrotate(fffx, ffz, ALPHA);
+        fffz= yrotate(fffx, ffz, ALPHA);
+        // vertical  rotation by BETA
+        ffz=  xrotate(fffz, fffy, BETA);
+        ffy=  yrotate(fffz, fffy, BETA);
+        ctx.moveTo(transpose(ffx, "x"),transpose(ffy, "y"));
+        //console.log( "transp(x,y) = (" + transpose(ffx, "x")+"," + transpose(ffy, "y")+")" );
+        
+        for	(index = 1; index < points.length; index++) {
+            fffx = points[index][0]; fffy=points[index][1]; ffz= points[index][2];
+            // horizontal rotation by ALPHA
+            ffx  = xrotate(fffx, ffz, ALPHA);
+            fffz = yrotate(fffx, ffz, ALPHA);
+            // vertical  rotation by BETA
+            ffz  = xrotate(fffz, fffy, BETA);
+            ffy  = yrotate(fffz, fffy, BETA);
+            ctx.lineTo(transpose(ffx, "x"),transpose(ffy, "y"));
+            //console.log( "transp(x,y) = (" + transpose(ffx, "x")+"," + transpose(ffy, "y")+")" );
+        }
+    }
+
+    var clearScreen= function(context) {
+        context.globalCompositeOperation="source-over";
+        context.fillStyle="rgb(0,0,0)";
+        context.canvas.width = canvas.width;
+    }
+    // 83 slide
+    var redraw= function() {
+        clearScreen(ctx);
+        draw(ctx, leftColor, leftEye);
+        clearScreen(ctx2);
+        draw(ctx2, rightColor, rightEye );
+        ctx.globalCompositeOperation="lighter";
+        ctx2.stroke();
+        ctx.drawImage(ctx2.canvas, 2,2);
+        ctx.stroke();
+    }
+    
+    var keyDownCallback=function (e){
+        //e.preventDefault(); // prevents browser from interpreting the keys for other tasks
+        const rotStep = Pi / 36; // 10 times rotate
+        var code= e.which || e.keyCode;
+        //event.preventDefault()
+        switch(code)
+        {
+            case 38: // up
+            BETA+=rotStep;
+            redraw();
+            break;
+            case 40: // down
+            BETA-=rotStep;
+            redraw();
+            break;
+            case 37: // left
+            ALPHA+=rotStep;
+            redraw();
+            break;
+            case 39:// right
+            ALPHA-=rotStep;
+            redraw();
+            break;
+            case 13: // Enter
+            readCommand();
+            redraw();
+            break;
+            case 67: // Space
+            ALPHA=0;
+            BETA=0;
+            redraw();
+            break;
+            //case 9: // Tab
+            case 75: // E
+            var tmp=  rightColor;
+            rightColor=leftColor;
+            leftColor=tmp;
+            redraw();
+            break;
+        };
+        
+    };
+    
+    onload= function(){
+        redraw(); // initial redraw
+        onkeydown=keyDownCallback; // set initial callback
+    }
+    
+    </script>
+    </body>
+</html>

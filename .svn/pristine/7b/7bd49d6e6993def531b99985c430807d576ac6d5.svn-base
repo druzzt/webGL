@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        
+        <canvas id="canvy" width="500" height="500" style="border:1px solid #d3d3d3;">
+            Your browser does not support the HTML5 canvas tag.</canvas>
+        </br>
+        <button onclick="go(10);">FORWARD(10)</button>
+        </br>
+        <button onclick="prawo(15);">PRAWO(15)</button>
+        <button onclick="lewo(15);">LEWO(15)</button>
+        </br>
+        <button onclick="prawo(90);">PRAWO(90)</button>
+        <button onclick="lewo(90);">LEWO(90)</button>
+        </br>
+        <input id="command" type="text">
+        <input id="value" type="number">
+        <script>
+            
+        /* contexts */
+        var c = document.getElementById("canvy");
+        var ctx = c.getContext("2d");
+        
+        /* coordinates and angle */
+        var turtlex=0;
+        var turtley=window.c.height;
+        var turtlea=0;
+        var pierwszyRuch=1;
+        
+        /* move forward a distance */
+        
+        function go(d){
+            forward(d, 0);
+        }
+        
+        function forward( d, hilbert ){
+            if(hilbert==0){
+            if (window.pierwszyRuch==1){
+                ctx.moveTo(window.c.width/2,window.c.height/2);
+                window.pierwszyRuch=0;
+                angle(180);
+                window.turtlex =window.c.height/2;
+                window.turtley =window.c.width/2;
+            }else{
+                ctx.moveTo(window.turtlex,window.turtley);
+            }}
+            var nextX = window.turtlex + (d * Math.sin(window.turtlea));
+            var nextY = window.turtley + (d * Math.cos(window.turtlea));
+            ctx.lineTo(nextX,nextY);
+            window.turtlex=nextX;
+            window.turtley=nextY;
+            window.lastx=nextX;
+            window.lasty=nextY;
+            ctx.stroke();
+        }
+        
+        function sforward( d ){
+            var nextX = window.turtlex + (d * Math.sin(window.turtlea));
+            var nextY = window.turtley + (d * Math.cos(window.turtlea));
+            ctx.moveTo(nextX, nextY);
+            window.turtlex=nextX;
+            window.turtley=nextY;
+            window.lastx=nextX;
+            window.lasty=nextY;
+        }
+        /* change turtles angle */
+        function angle( a ){
+                window.turtlea+=(a/180*Math.PI);    // prawo
+        }
+        /* rotate cursor to the right of given degree */
+        function prawo( a ) {
+            window.turtlea-=(a/180*Math.PI);
+        }
+        /* rotate cursor to the left of given degree */
+        function lewo( a ){
+            window.turtlea+=(a/180*Math.PI);
+        }
+        /* move to given coordinates drawing a line */
+        function move( x, y, shadow ) {
+            ctx.moveTo(window.turtlex, window.turtley);
+            if(shadow==0){
+                ctx.lineTo(x,y);
+            }
+            window.turtlex=x;
+            window.turtley=y;
+            ctx.stroke();
+        }
+        
+        /* program demonstracyjny */
+        /* foremny(ilosc_kątów, "#FFFFFF") - #FFFFFF - kolor lini */
+        function foremny( a, b ){
+            ctx.strokeStyle = b;
+            ctx.moveTo(window.c.width/2,window.c.height/2);
+            var i;
+            for(i=0;i<=a;i++){
+            angle(360/a);
+            forward((window.c.width+window.c.height)/2/a);
+            }
+            ctx.stroke();
+        }
+        
+        function zamkniety( start ){
+            ctx.moveTo(window.c.width/2,window.c.height/2);
+            var i;
+            for(i=0;i<=start;i++){
+                forward(i);
+                prawo(90);
+            }
+            ctx.stroke();
+        }
+        
+        function resecik( where ){
+            if(where == 0 ){
+                ctx.moveTo(0,0);
+                window.turtlex =0;
+                window.turtley =0;
+                prawo(90);
+            }
+            if(where >= 1 ){
+                ctx.moveTo(0,window.c.width);
+                window.turtlex =0;
+                window.turtley =window.c.width;
+            }
+        }
+        
+        /* ******************* HILBERT DEMO ******************************** */
+        // Which iteration of the Hilbert curve to draw
+        var iteration = 6;
+        // Length of each line in the Hilbert curve
+        var length = 6;
+        var forward1 = function(distance) {
+            forward(distance);
+        };
+        var right = function(angle) {
+            prawo(angle);
+        };
+        var left = function(angle) {
+            lewo(angle);
+        };
+        var rightHilbert;
+        var leftHilbert = function(l, w) {
+            if (l === 0) {
+                return;
+            }
+            right(90);
+            rightHilbert(l - 1, w);
+            forward1(w);
+            left(90);
+            leftHilbert(l - 1, w);
+            forward1(w);
+            leftHilbert(l - 1, w);
+            left(90);
+            forward1(w);
+            rightHilbert(l - 1, w);
+            right(90);
+        };
+        rightHilbert = function(l, w) {
+            if (l === 0) {
+                return;
+            }
+            left(90);
+            leftHilbert(l - 1, w);
+            forward1(w);
+            right(90);
+            rightHilbert(l - 1, w);
+            forward1(w);
+            rightHilbert(l - 1, w);
+            right(90);
+            forward1(w);
+            leftHilbert(l - 1, w);
+            left(90);
+        };
+        function hilbertuj( n ) {
+            angle(180);
+            window.iteration=n;
+            window.length=window.c.height/n/(2*n);
+            leftHilbert(iteration, length);
+        }
+        /* *************************************************** */
+        var clearInput = function(){
+            commandField.value = "";
+            valueField.value = "";
+            command = "";
+            value = "";
+        }
+        
+        var readCommand = function(){
+            command = commandField.value;
+            value   = valueField.value;
+            switch(command){
+                
+                case("go"):
+                go(value);
+                break;
+                
+                case("prawo"):
+                value = parseInt(value,10)
+                while(value < 0)
+                value += 360;
+                prawo(value);
+                break;
+                
+                case("lewo"):
+                value = parseInt(value,10)
+                while(value<0)
+                value+=360;
+                lewo(value);
+                break;
+                
+                case("hilbert"):
+                value = parseInt(value,10)
+                hilbertuj(value);
+                break;
+                
+                default:
+                console.log("default");
+            }
+            clearInput();
+        }
+        
+        var keyDownCallback=function (e){
+            //e.preventDefault(); // prevents browser from interpreting the keys for other tasks
+            const rotStep = Pi / 36; // 10 times rotate
+            var code= e.which || e.keyCode;
+            //event.preventDefault()
+            switch(code)
+            {
+                case 13: // Enter
+                readCommand();
+                break;
+                
+                case 81: // Space
+                hilbertuj(1);
+                break;
+                
+                case 87:
+                hilbertuj(2);
+                break;
+                
+                case 69:
+                hilbertuj(3);
+                break;
+                
+                case 82:
+                hilbertuj(4);
+                break;
+            };
+            
+        };
+
+        
+        
+        /*
+        function sh( n ){
+            hilbert(0,0,10,10,10,10,n);
+        }
+        function hilbert(x, y, xi, xj, yi, yj, n){
+            /* x and y are the coordinates of the bottom left corner */
+            /* xi & xj are the i & j components of the unit x vector of the frame */
+            /* similarly yi and yj * /
+            if (n <= 0) {
+            ctx.lineTo(x + (xi + yi)/2, y + (xj + yj)/2);
+            ctx.stroke();
+            }
+            else{
+                hilbert(x,           y,           yi/2, yj/2,  xi/2,  xj/2, n-1);
+                hilbert(x+xi/2,      y+xj/2 ,     xi/2, xj/2,  yi/2,  yj/2, n-1);
+                hilbert(x+xi/2+yi/2, y+xj/2+yj/2, xi/2, xj/2,  yi/2,  yj/2, n-1);
+                hilbert(x+xi/2+yi,   y+xj/2+yj,  -yi/2,-yj/2, -xi/2, -xj/2, n-1);
+            }
+        }*/
+        
+        /* find angle between three points B is the middle one */
+        /* function find_angle(A,B,C) {
+         var AB = Math.sqrt(Math.pow(B.x-A.x,2)+ Math.pow(B.y-A.y,2));
+         var BC = Math.sqrt(Math.pow(B.x-C.x,2)+ Math.pow(B.y-C.y,2));
+         var AC = Math.sqrt(Math.pow(C.x-A.x,2)+ Math.pow(C.y-A.y,2));
+         return Math.acos((BC*BC+AB*AB-AC*AC)/(2*BC*AB));
+         } */
+        
+        
+        
+        </script>
+    </body>
+</html>

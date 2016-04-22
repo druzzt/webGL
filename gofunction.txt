@@ -1,0 +1,26 @@
+ go: function(r) {
+                var a = this.toRad(this.dir);
+                var b = this.toRad(this.dirZ);
+                console.log("a and dir="+a+" "+this.dir);
+                console.log("b and dirZ="+b+" "+this.dirZ);
+                if(this.dir2d || this.dirZ == 180) {
+                    this.x += r * cos(a);
+                    this.y += r * sin(a);
+                }
+                else if(this.dirZ == 0){
+                    this.x -= r * Math.cos(a);
+                    this.y -= r * Math.sin(a);
+                }
+                else if(this.dirZ % 90 == 0){
+                    console.log("beta = "+this.dirZ);
+                    this.z += r * Math.sin(b);
+                    
+                }
+                else{
+                    this.z += r * sin(b);
+                    this.y += r * Math.sin(b);
+                }
+                console.log("x:"+turtle.x+" y:"+turtle.y+" z:"+turtle.z);
+                points[points.length] = [turtle.x, turtle.y, turtle.z];
+                return this;
+            },

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <!-- <style>
+            .result {
+                float: left;
+                margin: 5px;
+                padding: 10px;
+                width: 30px;
+                height: 30px;
+                border: 1px solid black;
+            } 
+        </style>-->
+       <div id="divButtons">
+           <font color="white">MOVE:</font>
+           <button type="button" id="buttonLeft"> LEFT </button>
+           <button type="button" id="buttonUp" onclick="upper()"> UP </button>
+           <button type="button" id="buttonDown" onclick="lower()"> DOWN </button>
+           <button type="button" id="buttonRight"> RIGHT </button>
+           <font color="white">SELECT:</font>
+           <button type="button" id="buttonNext"> NEXT </button>
+       </div>
+    </head>
+    <body>
+        <form name="Form1">
+            POSX: <input type="text" name="posx"><br>
+                POSY: <input type="text" name="posy"><br>
+        </form>
+       <!-- <canvas id="canvy" width="200" height="100" style="border:1px solid #c3c3c3;">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>-->
+        <!--<div class="result">
+        <p>Count numbers: <output id="result"></output></p>
+        </div>
+        <button onclick="startWorker()">Start</button>
+        <button onclick="stopWorker()">Stop</button>-->
+        
+        <!--<p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p>-->
+        
+        <script>
+            /*var clearScreen= function (ctx, bgColorString){
+                ctx.globalCompositeOperation="source-over";
+                ctx.fillStyle=bgColorString;
+                ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
+            }
+            var redraw= function(){
+                clearScreen(ctx, "rgb(0,0,0)");
+                draw(ctx, fgColor);
+            }
+        */
+            var keyDownCallback=function (e){
+                e.preventDefault();
+                var code= e.which || e.keyCode;
+                switch(code){
+                    case 13:
+                    //setFunctions();
+                    window.verTical+=30;
+                    rerender();
+                    break;
+                };
+                redraw();
+            }
+        /*
+            var perspective= function(eyex, eyez, screen_z, x, z){
+                return( eyex+(screen_z-eyez)*(x-eyex)/(z-eyez));
+            }
+            var xrotate=function(x,y,angle){
+                return (x*cos(angle)-y*sin(angle));
+            }
+            var yrotate=function(x,y,angle){
+                return (y*cos(angle)+x*sin(angle));
+            }*/
+        
+        
+            /************ SCRIPT FOR MOUSE POSITION ********/
+            function mouse_position()
+            {
+                var e = window.event;
+                
+                var posX = e.clientX;
+                var posY = e.clientY;
+                
+                document.Form1.posx.value = posX;
+                document.Form1.posy.value = posY;
+                
+                var t = setTimeout(mouse_position,100);
+                
+            }
+            /************ SCRIPT for wheel *********/
+            window.onload = function()
+            {
+                mouse_position();
+                //adding the event listerner for Mozilla
+                if(window.addEventListener)
+                document.addEventListener('DOMMouseScroll', moveObject, false);
+                
+                //for IE/OPERA etc
+                document.onmousewheel = moveObject;
+                //document.onkeydown=keyDownCallback;
+            }
+        function moveObject(event)
+        {
+            var delta = 0;
+            
+            if (!event) event = window.event;
+            
+            // normalize the delta
+            if (event.wheelDelta) {
+                
+                // IE and Opera
+                delta = event.wheelDelta / 60;
+                
+            } else if (event.detail) {
+                
+                // W3C
+                delta = -event.detail / 2;
+            }
+            
+            //var currPos=document.getElementById('scroll').offsetTop;
+            var currPos=0;// = window.verTical;
+            //calculating the next position of the object
+            currPos=parseInt(currPos)-(delta*10);
+            
+            //moving the position of the object
+            //document.getElementById('scroll').style.top = currPos+"px";
+            //document.getElementById('scroll').innerHTML = event.wheelDelta + ":" + event.detail;
+            rerender(currPos);
+        }
+        
+        /***** USELESS ******/
+        function upper(){
+            ctx.clearRect(0,0,w,h);
+            window.verTical-=15;
+            rerender(window.verTical);
+        }
+        function lower(){
+            ctx.clearRect(0,0,w,h);
+            window.verTical+=15;
+            rerender(window.verTical);
+        }
+        function righter(){
+            ctx.clearRect(0,0,w,h);
+           // window.horiZontal+=15;
+            rerender(window.verTical);
+        }
+        function changeY( a ){
+            ctx.clearRect(0,0,w,h);
+            window.verTical = a;
+            rerender(window.verTical);
+        }
+        
+        
+            document.body.style.backgroundColor = "black";
+            var canvas = document.createElement("canvas");
+            var w = canvas.width = window.innerWidth;
+            var h = canvas.height = window.innerHeight;
+            var fov = 250;
+            var ctx = canvas.getContext("2d");
+            document.body.appendChild(canvas);
+            var wo;
+            var verTical = 15;
+            var pixels = [];
+            
+            function rerender( Y ){
+                for(var x = -250; x<250; x+=5)
+                for(var z = -25; z<250; z+=5)
+                window.pixels.push({x: x, y: Y, z: z});
+                render();
+            }
+            rerender( window.verTical );
+            //Values starts at middle of page
+            var turtlex=window.width/2;
+            var turtley=window.height/2;
+            var turtlez=0;
+            
+          function setTurtle(){
+              
+          }
+              
+            function render()
+            {
+                ctx.clearRect(0,0,w,h);
+                var imagedata = ctx.getImageData(0,0,w,h);
+                var i = pixels.length;
+                while(i--){
+                    var pixel = pixels[i];
+                    
+                    var scale = fov/(fov+pixel.z);
+                    
+                    var x2d = pixel.x * scale + w/2;
+                    var y2d = pixel.y * scale + h/2;
+                    if(x2d >= 0 && x2d<= w && y2d>= 0 && y2d <= h)
+                    {
+                        var c = (Math.round(y2d) * imagedata.width + Math.round(x2d))*4;
+                        imagedata.data[c] = 0; // red
+                        imagedata.data[c+1] = 255; // green
+                        imagedata.data[c+2] = 60; // blue
+                        imagedata.data[c+3] = 255; // alpha
+                    }
+                    pixel.z -=1;
+                    if(pixel.z < -fov) pixel.z += 2*fov;
+                }
+                ctx.putImageData(imagedata, 0,0);
+            }
+            
+            setInterval(render,1000/27);
+            
+            
+            
+            
+            function startWorker() {
+                if(typeof(Worker) !== "undefined") {
+                    if(typeof(wo) == "undefined") {
+                        wo = new Worker("worker.js");
+                    }
+                    wo.onmessage = function(event) {
+                        document.getElementById("result").innerHTML = event.data;
+                    };
+                } else {
+                    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+                }
+            }
+        
+        function stopWorker() { 
+            wo.terminate();
+            wo = undefined;
+        }
+        </script>
+        
+        
+    </body>
+</html>
