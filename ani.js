@@ -156,19 +156,19 @@ var animate=function( time ) {
     
     data.object1.position[0]= (x+3)%2 -1;
     data.object1.position[1]= (y+3)%2 -1;
-    if(data.object1.position[0]-data.object1.radius < 0){
+    if(data.object1.position[0]-data.object1.radius < -1){
         data.object1.speed = - Math.abs(data.object1.speed);
         console.log(" x - < 0 ");
     }
-    else if(data.object1.position[0]+data.object1.radius > gl.canvas.width){
+    else if(data.object1.position[0]+data.object1.radius > 1){
         data.object1.speed = - Math.abs(data.object1.speed);
         console.log("x + > wid");
     }
-    if(data.object1.position[1]-data.object1.radius < 0){
+    if(data.object1.position[1]-data.object1.radius < -1){
         data.object1.speed = - Math.abs(data.object1.speed);
         console.log("y - < 0");
     }
-    else if(data.object1.position[1]+data.object1.radius > gl.canvas.height){
+    else if(data.object1.position[1]+data.object1.radius > 1){
         data.object1.speed = - Math.abs(data.object1.speed);
         console.log("y + > hi");
     }
