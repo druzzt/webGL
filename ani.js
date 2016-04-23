@@ -246,18 +246,20 @@ var callbackOnKeyDown =function (e){
     switch(code)
     {
     case 38: // up
-            data.object4.direction=[0,1];
+            data.object5.direction=[0,1];
             if( data.animation.requestId == 0) animationStart();
             break;
     case 73: // I
+        data.object4.direction=[0,1];
         data.object1.direction=[0,1];
 	if( data.animation.requestId == 0) animationStart();
 	break;
     case 40: // down
-            data.object4.direction=[0,-1];
+            data.object5.direction=[0,-1];
             if( data.animation.requestId == 0) animationStart();
             break;
     case 75: // K
+        data.object4.direction=[0,-1];
         data.object1.direction=[0,-1];
 	if( data.animation.requestId == 0) animationStart();
 	break;
