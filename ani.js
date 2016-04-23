@@ -92,6 +92,25 @@ var dataInit= function(){
     data.object4.floatsPerVertex=2;
     data.object4.NumberOfVertices=4;
     data.object4.drawMode=gl.LINE_LOOP;
+    
+    //paletka2
+    data.object4={};
+    data.object4.speed=0.0005; // ?
+    data.object4.direction= [0,0,0];
+    // parameters for drawObject
+    data.object4.position=[0,0,0.1];
+    data.object4.colorRGB=[0.1, 1, 0.1];
+    data.object4.bufferId = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, data.object4.bufferId );
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([ 0.95, 0.3,
+                                                      0.95, -0.3,
+                                                      0.9 , 0.3,
+                                                      0.9 , -0.3
+                                                     ]) , gl.STATIC_DRAW ); // load object's shape
+    data.object4.floatsPerVertex=2;
+    data.object4.NumberOfVertices=4;
+    data.object4.drawMode=gl.LINE_LOOP;
+
 
     
     /* animation */
