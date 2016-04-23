@@ -156,14 +156,22 @@ var animate=function( time ) {
     
     data.object1.position[0]= (x+3)%2 -1;
     data.object1.position[1]= (y+3)%2 -1;
-    if(data.object1.position[0]-data.object1.radius < 0)
+    if(data.object1.position[0]-data.object1.radius < 0){
         data.object1.speed = - Math.abs(data.object1.speed);
-    else if(data.object1.position[0]+data.object1.radius > gl.canvas.width)
+        console.log(" x - < 0 ");
+    }
+    else if(data.object1.position[0]+data.object1.radius > gl.canvas.width){
         data.object1.speed = - Math.abs(data.object1.speed);
-    if(data.object1.position[1]-data.object1.radius < 0)
+        console.log("x + > wid");
+    }
+    if(data.object1.position[1]-data.object1.radius < 0){
         data.object1.speed = - Math.abs(data.object1.speed);
-    else if(data.object1.position[1]+data.object1.radius > gl.canvas.height)
+        console.log("y - < 0");
+    }
+    else if(data.object1.position[1]+data.object1.radius > gl.canvas.height){
         data.object1.speed = - Math.abs(data.object1.speed);
+        console.log("y + > hi");
+    }
 
     // paletka1
     var x=  data.object4.position[0]+data.object4.direction[0]* data.object4.speed*timeDelta;
