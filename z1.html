@@ -112,19 +112,19 @@
              gl.viewport(0,0,canvas.width,canvas.height);
 
              // Draw the triangle
-             if(MODE==TRIANGLES){
+             if(MODE=="TRIANGLES"){
                  gl.drawArrays(gl.TRIANGLES, 0, 6);
-             }else if(MODE==POINTS){
+             }else if(MODE=="POINTS"){
                  gl.drawArrays(gl.POINTS, 0, 6);
-             }else if(MODE==LINE_STRIP){
+             }else if(MODE=="LINE_STRIP"){
                  gl.drawArrays(gl.LINE_STRIP, 0, 6);
-             }else if(MODE==LINE_LOOP){
+             }else if(MODE=="LINE_LOOP"){
                  gl.drawArrays(gl.LINE_LOOP, 0, 6);
-             }else if(MODE==LINES){
+             }else if(MODE=="LINES"){
                  gl.drawArrays(gl.LINES, 0, 6);
-             }else if(MODE==TRIANGLE_STRIP){
+             }else if(MODE=="TRIANGLE_STRIP"){
                  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 6);
-             }else if(MODE==TRIANGLE_FAN){
+             }else if(MODE=="TRIANGLE_FAN"){
                  gl.drawArrays(gl.TRIANGLE_FAN, 0, 6);
              }else{
                  gl.drawArrays(gl.POINTS, 0, 6);
