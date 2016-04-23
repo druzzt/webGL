@@ -101,7 +101,7 @@ var dataInit= function(){
     data.object5.position=[0,0,0.1];
     data.object5.colorRGB=[0.1, 1, 0.1];
     data.object5.bufferId = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, data.object4.bufferId );
+    gl.bindBuffer(gl.ARRAY_BUFFER, data.object5.bufferId );
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([ 0.95, 0.3,
                                                       0.95, -0.3,
                                                       0.9 , 0.3,
@@ -262,17 +262,11 @@ var callbackOnKeyDown =function (e){
 	if( data.animation.requestId == 0) animationStart();
 	break;
     case 37: // left
-            data.object4.direction=[-1,0];
-            if( data.animation.requestId == 0) animationStart();
-            break;
     case 74:// J
         data.object1.direction=[-1,0];
 	if( data.animation.requestId == 0) animationStart();
 	break;
     case 39:// right
-            data.object4.direction=[1,0];
-            if( data.animation.requestId == 0) animationStart();
-            break;
     case 76: // L
 	data.object1.direction=[1,0];
 	if( data.animation.requestId == 0) animationStart();
