@@ -55,7 +55,7 @@ var dataInit= function(){
 				      0.91,   -0.91] ) , gl.STATIC_DRAW ); // load object's shape
     data.object2.floatsPerVertex=2;
     data.object2.NumberOfVertices=4;
-    data.object2.drawMode=gl.LINES;
+    data.object2.drawMode=gl.LINE_LOOP;
 
     /* Static foreground object */
     data.object3={};
