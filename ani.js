@@ -270,7 +270,7 @@ var callbackOnKeyDown =function (e){
             break;
     case 73: // I
             data.object4.direction=[0,1];
-            data.object1.direction=[0,1];
+            data.object1.direction[1]=1;
             if( data.animation.requestId == 0) animationStart();
             break;
     case 40: // down
@@ -279,17 +279,17 @@ var callbackOnKeyDown =function (e){
             break;
     case 75: // K
             data.object4.direction=[0,-1];
-            data.object1.direction=[0,-1];
+            data.object1.direction[1]=-1;
             if( data.animation.requestId == 0) animationStart();
             break;
     case 37: // left
     case 74:// J
-            data.object1.direction=[-1,0];
+            data.object1.direction[0]=-1;
             if( data.animation.requestId == 0) animationStart();
             break;
     case 39:// right
     case 76: // L
-            data.object1.direction=[1,0];
+            data.object1.direction[0]=1;
             if( data.animation.requestId == 0) animationStart();
             break;
     case 32: // space
