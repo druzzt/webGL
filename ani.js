@@ -65,7 +65,7 @@ var dataInit= function(){
     data.object3.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object3.bufferId );
     gl.bufferData(gl.ARRAY_BUFFER, 
-		  new Float32Array([ -1,  -1,
+		  new Float32Array([ ,  -1,
 				      -1,  1,
 				      1,  -1,
 				      1,   1,
@@ -73,7 +73,7 @@ var dataInit= function(){
 				      0,    1 ] ) , gl.STATIC_DRAW ); // load object's shape
     data.object3.floatsPerVertex=2;
     data.object3.NumberOfVertices=6;
-    data.object3.drawMode=gl.LINE_STRIP;
+    data.object3.drawMode=gl.TRIANGLE_FAN;
 
     /* animation */
     data.animation={};
