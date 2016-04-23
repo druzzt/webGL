@@ -161,6 +161,13 @@ var animate=function( time ) {
     data.object4.position[0]= (x+3)%2 -1;
     data.object4.position[1]= (y+3)%2 -1;
     
+    // paletka2
+    var x=  data.object5.position[0]+data.object5.direction[0]* data.object5.speed*timeDelta;
+    var y=  data.object5.position[1]+data.object5.direction[1]* data.object5.speed*timeDelta;
+    
+    data.object5.position[0]= (x+3)%2 -1;
+    data.object5.position[1]= (y+3)%2 -1;
+    
     redraw();
     gl.finish();
     data.animation.requestId = window.requestAnimationFrame(animate);
@@ -250,36 +257,36 @@ var callbackOnKeyDown =function (e){
             if( data.animation.requestId == 0) animationStart();
             break;
     case 73: // I
-        data.object4.direction=[0,1];
-        data.object1.direction=[0,1];
-	if( data.animation.requestId == 0) animationStart();
-	break;
+            data.object4.direction=[0,1];
+            data.object1.direction=[0,1];
+            if( data.animation.requestId == 0) animationStart();
+            break;
     case 40: // down
             data.object5.direction=[0,-1];
             if( data.animation.requestId == 0) animationStart();
             break;
     case 75: // K
-        data.object4.direction=[0,-1];
-        data.object1.direction=[0,-1];
-	if( data.animation.requestId == 0) animationStart();
-	break;
+            data.object4.direction=[0,-1];
+            data.object1.direction=[0,-1];
+            if( data.animation.requestId == 0) animationStart();
+            break;
     case 37: // left
     case 74:// J
-        data.object1.direction=[-1,0];
-	if( data.animation.requestId == 0) animationStart();
-	break;
+            data.object1.direction=[-1,0];
+            if( data.animation.requestId == 0) animationStart();
+            break;
     case 39:// right
     case 76: // L
-	data.object1.direction=[1,0];
-	if( data.animation.requestId == 0) animationStart();
-	break;
+            data.object1.direction=[1,0];
+            if( data.animation.requestId == 0) animationStart();
+            break;
     case 32: // space
-	if( data.animation.requestId == 0) {
-	    animationStart();
-	} else {
-	    animationStop();
-	} 
-	break;
+            if( data.animation.requestId == 0) {
+                animationStart();
+            } else {
+                animationStop();
+            }
+            break;
     }
 }
 
