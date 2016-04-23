@@ -29,7 +29,7 @@ var dataInit= function(){
 
     /* animated object */
     data.object1={};
-    data.object1.speed=0.00003; // ?
+    data.object1.speed=0.0002; // ?
     data.object1.direction= [1,0,0];
     // parameters for drawObject
     data.object1.position=[0,0,0];
@@ -49,10 +49,10 @@ var dataInit= function(){
     data.object2.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object2.bufferId );
     gl.bufferData(gl.ARRAY_BUFFER, 
-		  new Float32Array([ -1,  0, 
-				      0,  1, 
-				      1,  0,
-				      0, -1] ) , gl.STATIC_DRAW ); // load object's shape
+		  new Float32Array([ -1,  -1,
+				      -1,  1,
+				      1,  -1,
+				      1,   1] ) , gl.STATIC_DRAW ); // load object's shape
     data.object2.floatsPerVertex=2;
     data.object2.NumberOfVertices=4;
     data.object2.drawMode=gl.TRIANGLE_FAN;
