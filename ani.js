@@ -33,7 +33,7 @@ var dataInit= function(){
     data.object1.direction= [1,1,0];
     // parameters for drawObject
     data.object1.position=[0,0,0];
-    data.object1.radius=0.08;
+    data.object1.radius=0.005;
     data.object1.colorRGB=[0.01, 0.9, 0.11];
     data.object1.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object1.bufferId );
@@ -151,27 +151,28 @@ var animate=function( time ) {
     data.animation.lastTime= time ;
     
         
+   
+    if(data.object1.position[0]-data.object1.radius <= -1){
+        data.object1.speed = - Math.abs(data.object1.speed);
+        console.log(" x - < 0 ");
+    }
+    else if(data.object1.position[0]+data.object1.radius >= 1){
+        data.object1.speed = - Math.abs(data.object1.speed);
+        console.log("x + > wid");
+    }
+    if(data.object1.position[1]-data.object1.radius <= -1){
+        data.object1.speed = - Math.abs(data.object1.speed);
+        console.log("y - < 0");
+    }
+    else if(data.object1.position[1]+data.object1.radius >= 1){
+        data.object1.speed = - Math.abs(data.object1.speed);
+        console.log("y + > hi");
+    }
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     
     data.object1.position[0]= (x+3)%2 -1;
     data.object1.position[1]= (y+3)%2 -1;
-    if(data.object1.position[0]-data.object1.radius < -1){
-        data.object1.speed = - Math.abs(data.object1.speed);
-        console.log(" x - < 0 ");
-    }
-    else if(data.object1.position[0]+data.object1.radius > 1){
-        data.object1.speed = - Math.abs(data.object1.speed);
-        console.log("x + > wid");
-    }
-    if(data.object1.position[1]-data.object1.radius < -1){
-        data.object1.speed = - Math.abs(data.object1.speed);
-        console.log("y - < 0");
-    }
-    else if(data.object1.position[1]+data.object1.radius > 1){
-        data.object1.speed = - Math.abs(data.object1.speed);
-        console.log("y + > hi");
-    }
 
     // paletka1
     var x=  data.object4.position[0]+data.object4.direction[0]* data.object4.speed*timeDelta;
