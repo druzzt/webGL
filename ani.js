@@ -154,6 +154,8 @@ var animate=function( time ) {
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     data.object1.position[0]= (x+3)%2 -1;
     data.object1.position[1]= (y+3)%2 -1;
+    console.log(data.object1.position[0]+"X");
+    console.log(data.object1.position[1]+"Y");
     if(data.object1.position[0]==(-0.9) || data.object1.position[0]==(0.9)){
         data.object1.position[0] = -data.object1.position[0];
         console.log(data.object1.position[0]);
