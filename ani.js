@@ -30,7 +30,7 @@ var dataInit= function(){
     /* animated object */
     data.object1={};
     data.object1.speed=0.001; // ?
-    data.object1.direction= [1,0,0];
+    data.object1.direction= [1,1,0];
     // parameters for drawObject
     data.object1.position=[0,0,0];
     data.object1.colorRGB=[0.01, 0.9, 0.11];
