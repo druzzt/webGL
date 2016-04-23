@@ -50,7 +50,7 @@ var dataInit= function(){
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object2.bufferId );
     gl.bufferData(gl.ARRAY_BUFFER, 
 		  new Float32Array([ -0.91,  -0.91,
-				      -0.91,  -0.91,
+				      -0.91,  0.91,
 				      0.91,  0.91,
 				      0.91,   -0.91] ) , gl.STATIC_DRAW ); // load object's shape
     data.object2.floatsPerVertex=2;
