@@ -52,11 +52,11 @@ var pointSizeUniformLocation;   // Identifies the uniform that controls the size
 var antialiasedLoc;             // Identifies the uniform that determines whether points are antialiased.
 var transformUniformLocation;   // Identifies the coordinate matrix uniform variable.
 var data = {};
-data.pointRadius;        // The radius of the points; half the point size.  This is the min of 16 and half the maximum point size.
+data.pointRadius=1;        // The radius of the points; half the point size.  This is the min of 16 and half the maximum point size.
 data.pointCt = 1;                                // The number of points to be drawn.
 data.points = new Float32Array(2*data.pointCt);       // The coordinates of the points, which change from frame to frame.
-data.boardCt;                                    // The number of boards for players.
-data.boardLength;                                // The length of the boards.
+data.boardCt = 1;                                    // The number of boards for players.
+data.boardLength = 1;                                // The length of the boards.
 data.boards = new Float32Array(2*data.boardCt);       // The coordinates of the boards, which change by players buttons.
 data.velocities = new Float32Array(2*data.pointCt);   // The velocities of the points, which determine how far they move in each frame.
                                                 //   Velocities don't change, except they reverse when the ball hits a wall.
