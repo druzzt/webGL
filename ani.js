@@ -33,6 +33,7 @@ var dataInit= function(){
     data.object1.direction= [1,1,0];
     // parameters for drawObject
     data.object1.position=[0,0,0];
+    data.object1.radius=0.08;
     data.object1.colorRGB=[0.01, 0.9, 0.11];
     data.object1.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object1.bufferId );
@@ -152,20 +153,18 @@ var animate=function( time ) {
         
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
+    
     data.object1.position[0]= (x+3)%2 -1;
     data.object1.position[1]= (y+3)%2 -1;
-    console.log(data.object1.position[0]+"X");
-    console.log(data.object1.position[1]+"Y");
-    if(data.object1.position[0]<=(-0.9) || data.object1.position[0]>=(0.9)){
-        data.object1.position[0] = -data.object1.position[0];
-        console.log(data.object1.position[0]);
-    }
-    if(data.object1.position[1]<=(-0.9) || data.object1.position[1]>=(0.9)){
-        data.object1.position[1] = -data.object1.position[1];
-        console.log(data.object1.position[1]);
-    }
-    data.object1.position[0]= (x+3)%2 -1;
-    data.object1.position[1]= (y+3)%2 -1;
+    if(data.object1.position[0]-data.object1.radius < 0)
+        data.object1.speed = - Math.abs(data.object1.speed);
+    else if(data.object1.position[0]+data.object1.radius > gl.canvas.width)
+        data.object1.speed = - Math.abs(data.object1.speed);
+    if(data.object1.position[1]-data.object1.radius < 0)
+        data.object1.speed = - Math.abs(data.object1.speed);
+    else if(data.object1.position[1]+data.object1.radius > gl.canvas.height)
+        data.object1.speed = - Math.abs(data.object1.speed);
+
     // paletka1
     var x=  data.object4.position[0]+data.object4.direction[0]* data.object4.speed*timeDelta;
     var y=  data.object4.position[1]+data.object4.direction[1]* data.object4.speed*timeDelta;
