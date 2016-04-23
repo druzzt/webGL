@@ -49,10 +49,10 @@ var dataInit= function(){
     data.object2.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object2.bufferId );
     gl.bufferData(gl.ARRAY_BUFFER, 
-		  new Float32Array([ -0.91,  -0.91,
-				      -0.91,  0.91,
-				      0.91,  0.91,
-				      0.91,   -0.91] ) , gl.STATIC_DRAW ); // load object's shape
+		  new Float32Array([ -0.99,  -0.99,
+				      -0.99,  0.99,
+				      0.99,  0.99,
+				      0.99,   -0.99] ) , gl.STATIC_DRAW ); // load object's shape
     data.object2.floatsPerVertex=2;
     data.object2.NumberOfVertices=4;
     data.object2.drawMode=gl.LINE_LOOP;
@@ -65,12 +65,12 @@ var dataInit= function(){
     data.object3.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object3.bufferId );
     gl.bufferData(gl.ARRAY_BUFFER, 
-		  new Float32Array([ -1,  0, 
-				      0,  1, 
-				      1,  0,
-				      0, -1, 
-				     -1,  0,
-				      1,  0 ] ) , gl.STATIC_DRAW ); // load object's shape
+		  new Float32Array([ -1,  -1,
+				      -1,  1,
+				      1,  -1,
+				      1,   1,
+                      0,   -1,
+				      0,    1 ] ) , gl.STATIC_DRAW ); // load object's shape
     data.object3.floatsPerVertex=2;
     data.object3.NumberOfVertices=6;
     data.object3.drawMode=gl.LINE_STRIP;
