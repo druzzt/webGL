@@ -29,7 +29,7 @@ var dataInit= function(){
 
     /* animated object */
     data.object1={};
-    data.object1.speed=0.009; // ?
+    data.object1.speed=0.001; // ?
     data.object1.direction= [1,0,0];
     // parameters for drawObject
     data.object1.position=[0,0,0];
@@ -154,17 +154,13 @@ var animate=function( time ) {
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     data.object1.position[0]= (x+3)%2 -1;
     data.object1.position[1]= (y+3)%2 -1;
-    if((data.object1.position[0])==0){
-        console.log("X="+x);
-        data.object1.direction[0]= -data.object1.direction[0];
-        x = data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
-                console.log("X="+x);
+    if(data.object1.position[0]==(-0.9) || data.object1.position[0]==(0.9)){
+        data.object1.position[0] = -data.object1.position[0];
+        console.log(data.object1.position[0]);
     }
-    if((data.object1.position[1])==0){
-                console.log("y="+y);
-        data.object1.direction[1]= -data.object1.direction[1];
-        y = data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
-                        console.log("y="+y);
+    if(data.object1.position[1]==(-0.9) || data.object1.position[1]==(0.9)){
+        data.object1.position[1] = -data.object1.position[1];
+        console.log(data.object1.position[1]);
     }
     data.object1.position[0]= (x+3)%2 -1;
     data.object1.position[1]= (y+3)%2 -1;
