@@ -149,16 +149,18 @@ var animate=function( time ) {
     var timeDelta= time-data.animation.lastTime;
     data.animation.lastTime= time ;
     
-    
+        
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
-    if((((x+3)%2) -1)==0){
+    data.object1.position[0]= (x+3)%2 -1;
+    data.object1.position[1]= (y+3)%2 -1;
+    if((data.object1.position[0])==0){
         console.log("X="+x);
         data.object1.direction[0]= -data.object1.direction[0];
         x = data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
                 console.log("X="+x);
     }
-    if((((y+3)%2) -1)==0){
+    if((data.object1.position[1])==0){
                 console.log("y="+y);
         data.object1.direction[1]= -data.object1.direction[1];
         y = data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
