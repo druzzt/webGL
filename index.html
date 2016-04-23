@@ -100,7 +100,7 @@ function createPoints() {
 }
 
 function createBoards(){
-    car width = gl.canvas.width;
+    var width = gl.canvas.width;
     var height = gl.canvas.height;
     for(var i=0; i< boardCt; i++){
         boards[2*i] = boardLength + Math.random()*(width-2*boardLength);
@@ -258,7 +258,7 @@ function loadTexture(){
 }
 </script>
 </head>
-<body onload="init()" style="background-color:#DDD">
+<body onload="init()" style="background-color:#FFF">
 
 <h2>WebGL 2D PONG</h2>
 
