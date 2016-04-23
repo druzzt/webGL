@@ -30,7 +30,7 @@ var dataInit= function(){
     /* animated object */
     data.object1={};
     data.object1.speed=0.001; // ?
-    data.object1.direction= [1,0.5,0];
+    data.object1.direction= [-0.5,0.5,0];
     // parameters for drawObject
     data.object1.position=[0,0,0];
     data.object1.radius=0.005;
@@ -153,18 +153,22 @@ var animate=function( time ) {
         
    
     if(data.object1.position[0]-data.object1.radius <= -1){
-        data.object1.speed = - Math.abs(data.object1.speed);
+        //data.object1.speed = - Math.abs(data.object1.speed);
+        data.object1.direction[0]= -data.object1.direction[0];
         console.log(" x - < 0 ");
     }
     if(data.object1.position[0]+data.object1.radius >= 1){
-        data.object1.speed = - Math.abs(data.object1.speed);
+        //data.object1.speed = - Math.abs(data.object1.speed);
+        data.object1.direction[0]= -data.object1.direction[0];
         console.log("x + > wid");
     }
     if(data.object1.position[1]-data.object1.radius <= -1){
-        data.object1.speed = - Math.abs(data.object1.speed);
+        //data.object1.speed = - Math.abs(data.object1.speed);
+        data.object1.direction[1]= -data.object1.direction[1];
         console.log("y - < 0");
     }
     if(data.object1.position[1]+data.object1.radius >= 1){
+        data.object1.direction[1]= -data.object1.direction[1];
         data.object1.speed = - Math.abs(data.object1.speed);
         console.log("y + > hi");
     }
