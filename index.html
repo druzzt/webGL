@@ -90,7 +90,7 @@ function createPoints() {
    for (var i = 0; i < pointCt; i++) {
        points[2*i] = pointRadius + Math.random()*(width-2*pointRadius);
        points[2*i+1] = pointRadius + Math.random()*(height-2*pointRadius);
-       velocities[2*i] = 30+220*Math.random();
+       velocities[2*i] = 30+120*Math.random();
        if (Math.random() < 0.5)
           velocities[2*i] = - velocities[2*i];
        velocities[2*i+1] = 30+120*Math.random();
@@ -105,7 +105,7 @@ function createBoards(){
     for(var i=0; i< boardCt; i++){
         boards[2*i] = boardLength + Math.random()*(width-2*boardLength);
         boards[2*i+1] = boardLength + Math.random()*(height-2*boardLength);
-        
+
     }
 }
 
@@ -258,7 +258,7 @@ function loadTexture(){
 }
 </script>
 </head>
-<body onload="init()" style="background-color:#FFF">
+<body onload="init()" style="background-color:#DDD">
 
 <h2>WebGL 2D PONG</h2>
 
