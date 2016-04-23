@@ -51,14 +51,14 @@ var vertexAttributeLocation;    // Identifies the vertex attribute variable in t
 var pointSizeUniformLocation;   // Identifies the uniform that controls the size of points.
 var antialiasedLoc;             // Identifies the uniform that determines whether points are antialiased.
 var transformUniformLocation;   // Identifies the coordinate matrix uniform variable.
-
-var pointRadius;        // The radius of the points; half the point size.  This is the min of 16 and half the maximum point size.
-var pointCt = 1;                                // The number of points to be drawn.
-var points = new Float32Array(2*pointCt);       // The coordinates of the points, which change from frame to frame.
-var boardCt;                                    // The number of boards for players.
-var boardLength;                                // The length of the boards.
-var boards = new Float32Array(2*boardCt);       // The coordinates of the boards, which change by players buttons.
-var velocities = new Float32Array(2*pointCt);   // The velocities of the points, which determine how far they move in each frame.
+var data = {};
+data.pointRadius;        // The radius of the points; half the point size.  This is the min of 16 and half the maximum point size.
+data.pointCt = 1;                                // The number of points to be drawn.
+data.points = new Float32Array(2*data.pointCt);       // The coordinates of the points, which change from frame to frame.
+data.boardCt;                                    // The number of boards for players.
+data.boardLength;                                // The length of the boards.
+data.boards = new Float32Array(2*data.boardCt);       // The coordinates of the boards, which change by players buttons.
+data.velocities = new Float32Array(2*data.pointCt);   // The velocities of the points, which determine how far they move in each frame.
                                                 //   Velocities don't change, except they reverse when the ball hits a wall.
 
 var sampler;
@@ -74,7 +74,7 @@ function draw() {
    gl.bufferData(gl.ARRAY_BUFFER, points, gl.DYNAMIC_DRAW);
    gl.vertexAttribPointer(vertexAttributeLocation, 2, gl.FLOAT, false, 0, 0);
    gl.enableVertexAttribArray(vertexAttributeLocation);
-   gl.drawArrays(gl.POINTS, 0, pointCt);
+   gl.drawArrays(gl.POINTS, 0, data.pointCt);
 }
 
 
@@ -87,24 +87,24 @@ function draw() {
 function createPoints() {
    var width = gl.canvas.width;
    var height = gl.canvas.height;
-   for (var i = 0; i < pointCt; i++) {
-       points[2*i] = pointRadius + Math.random()*(width-2*pointRadius);
-       points[2*i+1] = pointRadius + Math.random()*(height-2*pointRadius);
-       velocities[2*i] = 30+120*Math.random();
+   for (var i = 0; i < data.pointCt; i++) {
+       data.points[2*i] = data.pointRadius + Math.random()*(width-2*data.pointRadius);
+       data.points[2*i+1] = data.pointRadius + Math.random()*(height-2*data.pointRadius);
+       data.velocities[2*i] = 30+120*Math.random();
        if (Math.random() < 0.5)
-          velocities[2*i] = - velocities[2*i];
-       velocities[2*i+1] = 30+120*Math.random();
+          data.velocities[2*i] = - data.velocities[2*i];
+       data.velocities[2*i+1] = 30+120*Math.random();
        if (Math.random() < 0.5)
-          velocities[2*i+1] = - velocities[2*i+1];
+          data.velocities[2*i+1] = - data.velocities[2*i+1];
    }
 }
 
 function createBoards(){
     var width = gl.canvas.width;
     var height = gl.canvas.height;
-    for(var i=0; i< boardCt; i++){
-        boards[2*i] = boardLength + Math.random()*(width-2*boardLength);
-        boards[2*i+1] = boardLength + Math.random()*(height-2*boardLength);
+    for(var i=0; i< data.boardCt; i++){
+        data.boards[2*i] = data.boardLength + Math.random()*(width-2*data.boardLength);
+        data.boards[2*i+1] = data.boardLength + Math.random()*(height-2*data.boardLength);
 
     }
 }
@@ -154,19 +154,19 @@ var lastTime = 0;  // Time of previous call to doFrame();
 function doFrame(time) {  
    var deltaTime = (time - lastTime)/1000; // Time since last doFrame, in seconds.
    lastTime = time;
-   for (var j = 0; j < pointCt; j++) {
+   for (var j = 0; j < data.pointCt; j++) {
       var i = 2*j;
-      points[i] += deltaTime * velocities[i];
-      if (points[i]-pointRadius < 0)
-         velocities[i] = Math.abs(velocities[i]);
-      else if (points[i] + pointRadius > gl.canvas.width)
-         velocities[i] = - Math.abs(velocities[i]);
+      data.points[i] += deltaTime * data.velocities[i];
+      if (data.points[i]-data.pointRadius < 0)
+         data.velocities[i] = Math.abs(data.velocities[i]);
+      else if (data.points[i] + data.pointRadius > gl.canvas.width)
+         data.velocities[i] = - Math.abs(data.velocities[i]);
       var i = 2*j + 1;
-      points[i] += deltaTime * velocities[i];
-      if (points[i]-pointRadius < 0)
-         velocities[i] = Math.abs(velocities[i]);
-      else if (points[i] + pointRadius > gl.canvas.height)
-         velocities[i] = - Math.abs(velocities[i]);
+      data.points[i] += deltaTime * data.velocities[i];
+      if (data.points[i]-data.pointRadius < 0)
+         data.velocities[i] = Math.abs(data.velocities[i]);
+      else if (data.points[i] + data.pointRadius > gl.canvas.height)
+         data.velocities[i] = - Math.abs(data.velocities[i]);
    }
    draw();
  }
@@ -221,7 +221,7 @@ function init() {
        coordinateTransform(0, gl.canvas.width, gl.canvas.height, 0);  // Let's me use standard pixel coords.
        vertexAttributeBuffer = gl.createBuffer();
        var pointSizeRange = gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE);
-       pointRadius = Math.min(pointSizeRange[1]/2, 24);
+       data.pointRadius = Math.min(pointSizeRange[1]/2, 24);
        gl.uniform1f(pointSizeUniformLocation, pointRadius * 2);
        gl.blendFuncSeparate( gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA,
                              gl.ZERO, gl.ONE );
