@@ -162,11 +162,11 @@ var checkboundaries = function(){
         animationStop();
     }
     
-    if(data.object1.position[0]-data.object1.radius+0.05 <= -1){
+    if(data.object1.position[0]-data.object1.radius-0.05 <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
     }
-    else if(data.object1.position[0]+data.object1.radius-0.05 >= 1){
+    else if(data.object1.position[0]+data.object1.radius+0.05 >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("right @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
     }
