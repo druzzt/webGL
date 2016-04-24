@@ -157,12 +157,15 @@ var checkboundaries = function(){
      -0.9 , -0.3
      ]*/
     data.object1.speed=0.0001;
-    var hitx4 = data.object4.position[0]-data.object1.position[0];
+    var hitx4 = (data.object4.position[0]+data.object1.radius)>data.object1.position[0];
     //console.log(hitx4);
-    var hity4t= data.object4.position[3]-data.object1.radius<=data.object1.position[1];
-    var hity4l= data.object4.position[1]+data.object1.radius>=data.object1.position[1];
+    var hity4t= (data.object4.position[3]+data.object1.radius)>data.object1.position[1];
+    var hity4l= (data.object4.position[1]-data.object1.radius)<data.object1.position[1];
     console.log("x:{"+hitx4+"};  ytl:{"+hity4t+", "+hity4l+"}");
     // punkty
+    if(hitx4 && hity4t && hity4l){
+        console.log("paletka4 HIT");
+    }
     if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
