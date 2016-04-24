@@ -166,7 +166,7 @@ var checkboundaries = function(){
     }
     
     
-    if(((data.object1.position[0]-data.object1.radius) <= data.object4.position[0]) && (((data.object1.position-data.object1.radius)<=data.object4.position[3])||((data.object1.position+data.object1.radius)>=data.object4.position[1]))){
+    if(((data.object1.position[0]-data.object1.radius) <= (data.object4.position[0]+data.object1.radius)) && (((data.object1.position-data.object1.radius)<=(data.object4.position[3]data.object1.radius))||((data.object1.position+data.object1.radius)>=(data.object4.position[1]data.object1.radius)))){
         console.log("dotknalem paletki 1");
         data.object1.direction[0]= -data.object1.direction[0];
     }
