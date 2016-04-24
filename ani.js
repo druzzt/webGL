@@ -166,7 +166,7 @@ var checkboundaries = function(){
         data.object1.speed+=0.0001;
         console.log("G1:"+data.object4.punkt)
     }else if(data.object1.position[0] <= -0.9 + data.object1.radius || data.object1.position[0] >= 0.9 - data.object1.radius){
-        if(data.object1.position[1] >= data.object4.position[1]+0.3 || data.object1.position[1] <= data.object4.position[3]-0.3){
+        if(data.object1.position[1] <= data.object4.position[1]+0.3 || data.object1.position[1] >= data.object4.position[3]-0.3){
             console.log("hit");
         }
     }
