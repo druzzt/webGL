@@ -152,13 +152,13 @@ var checkboundaries = function(){
     if(data.object1.position[0]-data.object1.radius <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("<-paletka @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
-        alert("WIN");
+        console.log("WIN prawy gracz");
         animationStop();
     }
     else if(data.object1.position[0]+data.object1.radius >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("paletka-> @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
-        alert("WIN");
+        console.log("WIN lewy gracz");
         animationStop();
     }
     
@@ -178,12 +178,7 @@ var checkboundaries = function(){
         data.object1.direction[1]= -data.object1.direction[1];
         console.log("up @ "+data.object1.direction+" @ "+data.object1.position); // |``| up
     }
-    
-    
-    if(((data.object1.position[0]-data.object1.radius) <= data.object4.position[0]) && (((data.object1.position-data.object1.radius)<=data.object4.position[3])||((data.object1.position+data.object1.radius)>=data.object4.position[1]))){
-        console.log("dotknalem paletki 1");
-        data.object1.direction[0]= -data.object1.direction[0];
-    }
+
     
 }
 
