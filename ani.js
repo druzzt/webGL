@@ -158,8 +158,8 @@ var checkboundaries = function(){
     var o1px0 = data.object1.position[0];
     var o1py1 = data.object1.position[1];
     
-    console.log("x's: "+ o4px0 + " : "+ o1px0 + " : " + o5px0);
-    console.log("y's: "+ o4py1 + " : "+ o1py1 + " : " + o5py1);
+    //console.log("x's: "+ o4px0 + " : "+ o1px0 + " : " + o5px0);
+    //console.log("y's: "+ o4py1 + " : "+ o1py1 + " : " + o5py1);
     
     if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
