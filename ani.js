@@ -213,7 +213,7 @@ var animate=function( time ) {
     
         
     
-    
+    console.log("pos y:"+data.object4.position[1]);
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     
