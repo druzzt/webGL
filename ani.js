@@ -212,7 +212,7 @@ var animate=function( time ) {
     data.animation.lastTime= time ;
     
         
-    checkboundaries();
+    
     
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
@@ -233,6 +233,7 @@ var animate=function( time ) {
     
     data.object5.position[0]= (x5+3)%2 -1;
     data.object5.position[1]= (y5+3)%2 -1;
+    checkboundaries();
     
     redraw();
     gl.finish();
