@@ -29,7 +29,7 @@ var dataInit= function(){
 
     /* animated object */
     data.object1={};
-    data.object1.speed=0.001; // ?
+    data.object1.speed=0.002; // ?
     var xr = Math.random()*1.0;
     var yr = -(Math.random()*1.0);
     data.object1.direction= [xr,yr,0];
@@ -85,7 +85,7 @@ var dataInit= function(){
     data.object4={};
     data.object4.punkt= 0;
     data.object4.lineWidther=10;
-    data.object4.speed=0.0002; // ?
+    data.object4.speed=0.001; // ?
     data.object4.direction= [0,0,0];
     // parameters for drawObject
     data.object4.position=[0,0,0.1];
@@ -103,7 +103,7 @@ var dataInit= function(){
     data.object5={};
     data.object5.lineWidther=10;
     data.object5.punkt=0;
-    data.object5.speed=0.0002; // ?
+    data.object5.speed=0.001; // ?
     data.object5.direction= [0,0,0];
     // parameters for drawObject
     data.object5.position=[0,0,0.1];
@@ -180,12 +180,14 @@ var checkboundaries = function(){
         data.object1.speed+=0.0001;
         console.log("G1:"+data.object4.punkt)
     }else if(data.object1.position[0] <= -0.9 + data.object1.radius){
+        console.log("1 : "+data.object1.position[1]+" : "+data.object4.position[1]);
         if(data.object1.position[1] <= data.object4.position[1] && data.object1.position[1] >= data.object4.position[3] ){
             console.log("l hit");
             data.object1.speed-=0.0001;
             data.object1.direction[0]= -data.object1.direction[0];
         }
     }else if(data.object1.position[0] >= 0.9 - data.object1.radius){
+        console.log("1 : "+data.object1.position[1]+" : "+data.object4.position[1]);
         if(data.object1.position[1] >= data.object5.position[1] && data.object1.position[1] <= data.object5.position[3]){
             console.log("p hit");
             data.object1.speed+=0.0001;
