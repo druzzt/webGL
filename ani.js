@@ -85,7 +85,7 @@ var dataInit= function(){
     data.object4.direction= [0,0,0];
     // parameters for drawObject
     data.object4.position=[0,0,0.1];
-    data.object4.colorRGB=[0.1, 1, 0.1];
+    data.object4.colorRGB=[0.5, 0.5, 1];
     data.object4.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object4.bufferId );
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-0.9, 0.3,
@@ -102,7 +102,7 @@ var dataInit= function(){
     data.object5.direction= [0,0,0];
     // parameters for drawObject
     data.object5.position=[0,0,0.1];
-    data.object5.colorRGB=[0.1, 1, 0.1];
+    data.object5.colorRGB=[1, 0.5, 0.5];
     data.object5.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object5.bufferId );
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([ 0.9, 0.3,
@@ -146,60 +146,30 @@ var redraw = function() {
 
 }
 var checkboundaries = function(){
-    //odbicia
-    /*[-0.95, 0.3,
-     -0.95, -0.3,
-     -0.9 , 0.3,
-     -0.9 , -0.3
-     ]*/
+    
     var o4px0 = data.object4.position[0];
     var o4py1 = data.object4.position[1];
     var o4px2 = data.object4.position[2];
     var o4py3 = data.object4.position[3];
-    /*var o4px4 = data.object4.position[4];
-    var o4py5 = data.object4.position[5];
-    var o4px6 = data.object4.position[6];
-    var o4py7 = data.object4.position[7];
-    */
     var o5px0 = data.object5.position[0];
     var o5py1 = data.object5.position[1];
     var o5px2 = data.object5.position[2];
     var o5py3 = data.object5.position[3];
-    /*var o5px4 = data.object5.position[4];
-    var o5py5 = data.object5.position[5];
-    var o5px6 = data.object5.position[6];
-    var o5py7 = data.object5.position[7];
-    */
     var o1px0 = data.object1.position[0];
     var o1py1 = data.object1.position[1];
     
-    console.log(o4px0 + " : "+ o1px0 + " : " + o5px0);
-    console.log(o4py1 + " : "+ o1py1 + " : " + o5py1);
-    //console.log(o4px2 + " : "+ o1py1 + " : " + o5px2);
-    //console.log(o4py3 + " : "+ o1py1 + " : " + o5py3);
-    //console.log(o4px4 + " : "+ o1py1 + " : " + o5px4);
-    //console.log(o4py5 + " : "+ o1py1 + " : " + o5py5);
-    //console.log(o4px6 + " : "+ o1py1 + " : " + o5px6);
-    //console.log(o4py7 + " : "+ o1py1 + " : " + o5py7);
-    console.log("------");
-    var hitx4 = (data.object4.position[0]+data.object1.radius)<data.object1.position[0];
-    //console.log(hitx4);
-    var hity4t= (data.object4.position[3]+data.object1.radius)>data.object1.position[1];
-    var hity4l= (data.object4.position[1]-data.object1.radius)<data.object1.position[1];
-    console.log("x:{"+hitx4+"};  ytl:{"+hity4t+", "+hity4l+"}");
-    // punkty
-    if(hitx4 && hity4t && hity4l){
-        console.log("paletka4 HIT");
-    }
+    console.log("x's: "+ o4px0 + " : "+ o1px0 + " : " + o5px0);
+    console.log("y's: "+ o4py1 + " : "+ o1py1 + " : " + o5py1);
+  
     if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
-        console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
+        //console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
         data.object5.punkt+=1;
         console.log("G2:"+data.object5.punkt)
     }
     else if(data.object1.position[0]+data.object1.radius-0.015 >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
-        console.log("right @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
+        //console.log("right @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
         data.object4.punkt+=1;
         console.log("G1:"+data.object4.punkt)
     }
@@ -207,11 +177,11 @@ var checkboundaries = function(){
     //sufit podloga
     if(data.object1.position[1]-data.object1.radius <= -1){
         data.object1.direction[1]= -data.object1.direction[1];
-        console.log("down @ "+data.object1.direction+" @ "+data.object1.position); // |_| down
+        //console.log("down @ "+data.object1.direction+" @ "+data.object1.position); // |_| down
     }
     else if(data.object1.position[1]+data.object1.radius >= 1){
         data.object1.direction[1]= -data.object1.direction[1];
-        console.log("up @ "+data.object1.direction+" @ "+data.object1.position); // |``| up
+        //console.log("up @ "+data.object1.direction+" @ "+data.object1.position); // |``| up
     }
     
 }
@@ -222,6 +192,7 @@ var animate=function( time ) {
     
         
     checkboundaries();
+    
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     
@@ -229,24 +200,18 @@ var animate=function( time ) {
     data.object1.position[1]= (y+3)%2 -1;
 
     // paletka1
-    var x=  data.object4.position[0]+data.object4.direction[0]* data.object4.speed*timeDelta;
-    var y=  data.object4.position[1]+data.object4.direction[1]* data.object4.speed*timeDelta;
-    //var x2= data.object4.position[2]+data.object4.direction[2]* data.object4.speed*timeDelta;
-    //var y3=  data.object4.position[3]+data.object4.direction[3]* data.object4.speed*timeDelta;
-    data.object4.position[0]= (x+3)%2 -1;
-    data.object4.position[1]= (y+3)%2 -1;
-    //data.object4.position[2]= (x2+3)%2 -1;
-    //data.object4.position[3]= (y3+3)%2 -1;
-    // paletka2
-    var x=  data.object5.position[0]+data.object5.direction[0]* data.object5.speed*timeDelta;
-    var y=  data.object5.position[1]+data.object5.direction[1]* data.object5.speed*timeDelta;
-    //var x2= data.object5.position[2]+data.object5.direction[2]* data.object5.speed*timeDelta;
-    //var y3=  data.object5.position[3]+data.object5.direction[3]* data.object5.speed*timeDelta;
+    var x4=  data.object4.position[0]+data.object4.direction[0]* data.object4.speed*timeDelta;
+    var y4=  data.object4.position[1]+data.object4.direction[1]* data.object4.speed*timeDelta;
     
-    data.object5.position[0]= (x+3)%2 -1;
-    data.object5.position[1]= (y+3)%2 -1;
-    //data.object5.position[2]= (x2+3)%2 -1;
-    //data.object5.position[3]= (y3+3)%2 -1;
+    data.object4.position[0]= (x4+3)%2 -1;
+    data.object4.position[1]= (y4+3)%2 -1;
+
+    // paletka2
+    var x5=  data.object5.position[0]+data.object5.direction[0]* data.object5.speed*timeDelta;
+    var y5=  data.object5.position[1]+data.object5.direction[1]* data.object5.speed*timeDelta;
+    
+    data.object5.position[0]= (x5+3)%2 -1;
+    data.object5.position[1]= (y5+3)%2 -1;
     
     redraw();
     gl.finish();
