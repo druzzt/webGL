@@ -30,8 +30,8 @@ var dataInit= function(){
     /* animated object */
     data.object1={};
     data.object1.speed=0.001; // ?
-    var xr = Math.random()*0.5 + 0.7;
-    var yr =-( Math.random()*0.5 + 0.7);
+    var xr = Math.random()*1.0;
+    var yr = -(Math.random()*1.0);
     data.object1.direction= [xr,yr,0];
     data.object1.lineWidther=5;
     // parameters for drawObject
