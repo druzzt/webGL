@@ -30,10 +30,12 @@ var dataInit= function(){
     /* animated object */
     data.object1={};
     data.object1.speed=0.001; // ?
-    data.object1.direction= [-0.5,0.5,0];
+    var xr = Math.random()*0.5 + 0.7;
+    var yr =-( Math.random()*0.5 + 0.7);
+    data.object1.direction= [xr,yr,0];
     // parameters for drawObject
     data.object1.position=[0,0,0];
-    data.object1.radius=0.155;
+    data.object1.radius=0.095;
     data.object1.colorRGB=[0.01, 0.9, 0.11];
     data.object1.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object1.bufferId );
@@ -154,19 +156,19 @@ var animate=function( time ) {
    
     if(data.object1.position[0]-data.object1.radius <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
-                console.log("1 @ "+data.object1.direction+" @ "+data.object1.position);
+        console.log("1 @ "+data.object1.direction+" @ "+data.object1.position);
     }
     else if(data.object1.position[0]+data.object1.radius >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
-                console.log("2 @ "+data.object1.direction+" @ "+data.object1.position);
+        console.log("2 @ "+data.object1.direction+" @ "+data.object1.position);
     }
     else if(data.object1.position[1]-data.object1.radius <= -1){
         data.object1.direction[1]= -data.object1.direction[1];
-                        console.log("3 @ "+data.object1.direction+" @ "+data.object1.position);
+        console.log("3 @ "+data.object1.direction+" @ "+data.object1.position);
     }
     else if(data.object1.position[1]+data.object1.radius >= 1){
         data.object1.direction[1]= -data.object1.direction[1];
-                        console.log("4 @ "+data.object1.direction+" @ "+data.object1.position);
+        console.log("4 @ "+data.object1.direction+" @ "+data.object1.position);
     }
     
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
