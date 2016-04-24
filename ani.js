@@ -154,7 +154,7 @@ var animate=function( time ) {
    
     if(data.object1.position[0]+data.object1.radius <= data.object2.position[0]){
         data.object1.direction[0]= -data.object1.direction[0];
-        console.log("1"+data.object1.direction+" "+data.object1.position);
+        console.log("1 @ "+data.object1.direction+" @ "+data.object1.position);
         
     }
     else if(data.object1.position[0]+data.object1.radius >= data.object2.position[4]){
@@ -164,26 +164,26 @@ var animate=function( time ) {
     }
     else if(data.object1.position[1]+data.object1.radius <= data.object2.position[1]){
         data.object1.direction[1]= -data.object1.direction[1];
-                console.log("3"+data.object1.direction+" "+data.object1.position);
+                console.log("3 @ "+data.object1.direction+" @ "+data.object1.position);
     }
     else if(data.object1.position[1]+data.object1.radius >= data.object2.position[3]){
         data.object1.direction[1]= -data.object1.direction[1];
-                console.log("4"+data.object1.direction+" "+data.object1.position);
+                console.log("4 @ "+data.object1.direction+" @ "+data.object1.position);
     }
     if((data.object1.position[0]+data.object1.radius)<=data.object4.position[4] && ((data.object1.position[1]+data.object1.radius)<=data.object4.position[1] || (data.object1.position[1]+data.object1.radius)>=data.object4.position[3])){
         data.object1.direction[0]= -data.object1.direction[0];
-                console.log("5"+data.object1.direction+" "+data.object1.position);
+                console.log("5 @ "+data.object1.direction+" @ "+data.object1.position);
     }
     if((data.object1.position[0]+data.object1.radius)<=data.object5.position[4] && ((data.object1.position[1]+data.object1.radius)<=data.object5.position[1] || (data.object1.position[1]+data.object1.radius)>=data.object5.position[3])){
       data.object1.direction[0]= -data.object1.direction[0];
-                console.log("6"+data.object1.direction+" "+data.object1.position);
+                console.log("6 @ "+data.object1.direction+" @ "+data.object1.position);
     }
        
     var x =  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y =  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     
-    data.object1.position[0]=x;// (x+3)%2 -1;
-    data.object1.position[1]=y;// (y+3)%2 -1;
+    data.object1.position[0]= (x+3)%2 -1;
+    data.object1.position[1]= (y+3)%2 -1;
 
     // paletka1
     var x=  data.object4.position[0]+data.object4.direction[0]* data.object4.speed*timeDelta;
