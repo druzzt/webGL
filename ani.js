@@ -167,6 +167,7 @@ var checkboundaries = function(){
         console.log("G1:"+data.object4.punkt)
     }else if(data.object1.position[0] <= -0.9 + data.object1.radius || data.object1.position[0] >= 0.9 - data.object1.radius){
         if(data.object1.position[1] <= data.object4.position[1]+0.3 || data.object1.position[1] >= data.object4.position[3]-0.3){
+            data.object1.direction[0] = -data.object1.direction[0];
             console.log("hit");
         }
     }
@@ -187,9 +188,7 @@ var animate=function( time ) {
     var timeDelta= time-data.animation.lastTime;
     data.animation.lastTime= time ;
     
-        
     
-
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     
@@ -208,7 +207,7 @@ var animate=function( time ) {
     var y5=  data.object5.position[1]+data.object5.direction[1]* data.object5.speed*timeDelta;
     
     data.object5.position[0]= (x5+3)%2 -1;
-    data.object5.position[1]=data.object1.position[1]; //(y5+3)%2 -1;
+    data.object5.position[1]= (y5+3)%2 -1;
     checkboundaries();
     
     redraw();
