@@ -187,7 +187,7 @@ var checkboundaries = function(){
             data.object1.direction[0]= -data.object1.direction[0];
         }
     }else if(data.object1.position[0] >= 0.9 - data.object1.radius){
-        console.log("1 : "+data.object1.position[1]+" : "+data.object4.position[1]);
+        console.log("2 : "+data.object1.position[1]+" : "+data.object4.position[1]);
         if(data.object1.position[1] >= data.object5.position[1] && data.object1.position[1] <= data.object5.position[3]){
             console.log("p hit");
             data.object1.speed+=0.0001;
