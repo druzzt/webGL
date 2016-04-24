@@ -167,8 +167,11 @@ var checkboundaries = function(){
         console.log("G1:"+data.object4.punkt)
     }else if(data.object1.position[0] <= -0.9 + data.object1.radius && (data.object1.position[1] <= data.object4.position[1]+0.3 || data.object1.position[1] >= data.object4.position[3]-0.3)){
             data.object1.direction[0] = -data.object1.direction[0];
-            console.log("hit");
-        }
+            console.log("4 hit");
+    }else if(data.object1.position[0] >= 0.9 + data.object1.radius && (data.object1.position[1] >= data.object5.position[1]-0.3 || data.object1.position[1] <= data.object5.position[3]+0.3)){
+        data.object1.direction[0] = -data.object1.direction[0];
+        console.log("5 hit");
+    }
     
     
     //sufit podloga
@@ -199,7 +202,7 @@ var animate=function( time ) {
     var y4=  data.object4.position[1]+data.object4.direction[1]* data.object4.speed*timeDelta;
     
     data.object4.position[0]= (x4+3)%2 -1;
-    data.object4.position[1]= data.object1.position[1];//(y4+3)%2 -1;
+    data.object4.position[1]= (y4+3)%2 -1;
 
     // paletka2
     var x5=  data.object5.position[0]+data.object5.direction[0]* data.object5.speed*timeDelta;
