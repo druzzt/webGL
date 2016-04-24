@@ -86,9 +86,9 @@ var dataInit= function(){
     data.object4.punkt= 0;
     data.object4.lineWidther=10;
     data.object4.speed=0.001; // ?
-    data.object4.direction= [0,0,0];
+    data.object4.direction= [0,1,0];
     // parameters for drawObject
-    data.object4.position=[0,0,0.1];
+    data.object4.position=[0,0,0];
     data.object4.colorRGB=[0.5, 0.5, 1];
     data.object4.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object4.bufferId );
@@ -104,9 +104,9 @@ var dataInit= function(){
     data.object5.lineWidther=10;
     data.object5.punkt=0;
     data.object5.speed=0.001; // ?
-    data.object5.direction= [0,0,0];
+    data.object5.direction= [0,-1,0];
     // parameters for drawObject
-    data.object5.position=[0,0,0.1];
+    data.object5.position=[0,0,0];
     data.object5.colorRGB=[1, 0.5, 0.5];
     data.object5.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object5.bufferId );
@@ -151,22 +151,8 @@ var redraw = function() {
 
 }
 var checkboundaries = function(){
-    
-    var o4px0 = data.object4.position[0];
-    var o4py1 = data.object4.position[1];
-    var o4px2 = data.object4.position[2];
-    var o4py3 = data.object4.position[3];
-    var o5px0 = data.object5.position[0];
-    var o5py1 = data.object5.position[1];
-    var o5px2 = data.object5.position[2];
-    var o5py3 = data.object5.position[3];
-    var o1px0 = data.object1.position[0];
-    var o1py1 = data.object1.position[1];
-    
-    //console.log("x's: "+ o4px0 + " : "+ o1px0 + " : " + o5px0);
-    //console.log("y's: "+ o4py1 + " : "+ o1py1 + " : " + o5py1);
-    
-    if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
+
+    if([0]-data.object1.radius+0.015 <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
         //console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
         data.object5.punkt+=1;
@@ -187,7 +173,7 @@ var checkboundaries = function(){
             data.object1.direction[0]= -data.object1.direction[0];
         }
     }else if(data.object1.position[0] >= 0.9 - data.object1.radius){
-        console.log("2 : "+data.object1.position[1]+" : "+data.object4.position[1]);
+        console.log("2 : "+data.object1.position[1]+" : "+data.object5.position[1]);
         if(data.object1.position[1] >= data.object5.position[1] && data.object1.position[1] <= data.object5.position[3]){
             console.log("p hit");
             data.object1.speed+=0.0001;
@@ -213,7 +199,7 @@ var animate=function( time ) {
     
         
     
-    console.log("pos y:"+data.object4.position[1]);
+
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     
