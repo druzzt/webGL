@@ -29,7 +29,7 @@ var dataInit= function(){
 
     /* animated object */
     data.object1={};
-    data.object1.speed=0.002; // ?
+    data.object1.speed=0.0007; // ?
     var xr = Math.random()*1.0;
     var yr = -(Math.random()*1.0);
     data.object1.direction= [xr,yr,0];
