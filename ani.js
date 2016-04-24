@@ -95,7 +95,7 @@ var dataInit= function(){
                                                      ]) , gl.STATIC_DRAW ); // load object's shape
     data.object4.floatsPerVertex=2;
     data.object4.NumberOfVertices=4;
-    data.object4.drawMode=gl.LINE_LOOP;
+    data.object4.drawMode=gl.TRIANGLE_FAN;
     
     //paletka2
     data.object5={};
@@ -114,7 +114,7 @@ var dataInit= function(){
                                                      ]) , gl.STATIC_DRAW ); // load object's shape
     data.object5.floatsPerVertex=2;
     data.object5.NumberOfVertices=4;
-    data.object5.drawMode=gl.LINE_LOOP;
+    data.object5.drawMode=gl.TRIANGLE_FAN;
 
 
     
@@ -159,8 +159,8 @@ var checkboundaries = function(){
     data.object1.speed=0.0001;
     var hitx4 = data.object4.position[0]-data.object1.position[0];
     //console.log(hitx4);
-    var hity4t= data.object4.position[5]-(data.object1.position[1]);
-    var hity4l= data.object4.position[7]-(data.object1.position[1]);
+    var hity4t=0;
+    var hity4l= data.object4.position[1]+data.object1.radius>=data.object1.position[1];
     console.log("x:{"+hitx4+"};  ytl:{"+hity4t+", "+hity4l+"}");
     // punkty
     if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
