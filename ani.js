@@ -149,24 +149,24 @@ var redraw = function() {
 }
 var checkboundaries = function(){
     
-    if(data.object1.position[0]-data.object1.radius+0.05 <= -1){
+    if(data.object1.position[0]-data.object1.radius <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
         alert("WIN");
         animationStop();
     }
-    else if(data.object1.position[0]+data.object1.radius-0.05 >= 1){
+    else if(data.object1.position[0]+data.object1.radius >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("right @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
         alert("WIN");
         animationStop();
     }
     
-    if(data.object1.position[0]-data.object1.radius <= -1){
+    if(data.object1.position[0]-data.object1.radius+0.05 <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
     }
-    else if(data.object1.position[0]+data.object1.radius >= 1){
+    else if(data.object1.position[0]+data.object1.radius-0.05 >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("right @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
     }
