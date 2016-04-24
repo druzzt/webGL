@@ -156,7 +156,36 @@ var checkboundaries = function(){
      -0.9 , 0.3,
      -0.9 , -0.3
      ]*/
-    data.object1.speed=0.0001;
+    var o4px0 = data.object4.position[0];
+    var o4py1 = data.object4.position[1];
+    var o4px2 = data.object4.position[2];
+    var o4py3 = data.object4.position[3];
+    var o4px4 = data.object4.position[4];
+    var o4py5 = data.object4.position[5];
+    var o4px6 = data.object4.position[6];
+    var o4py7 = data.object4.position[7];
+    
+    var o5px0 = data.object5.position[0];
+    var o5py1 = data.object5.position[1];
+    var o5px2 = data.object5.position[2];
+    var o5py3 = data.object5.position[3];
+    var o5px4 = data.object5.position[4];
+    var o5py5 = data.object5.position[5];
+    var o5px6 = data.object5.position[6];
+    var o5py7 = data.object5.position[7];
+    
+    var o1px0 = data.object1.position[0];
+    var o1py1 = data.object1.position[1];
+    
+    console.log(o4px0 + " : "+ o1px0 + " : " + o5px0);
+    console.log(o4py1 + " : "+ o1py1 + " : " + o5py1);
+    console.log(o4py2 + " : "+ o1py1 + " : " + o5py2);
+    console.log(o4py3 + " : "+ o1py1 + " : " + o5py3);
+    console.log(o4py4 + " : "+ o1py1 + " : " + o5py4);
+    console.log(o4py5 + " : "+ o1py1 + " : " + o5py5);
+    console.log(o4py6 + " : "+ o1py1 + " : " + o5py6);
+    console.log(o4py7 + " : "+ o1py1 + " : " + o5py7);
+    console.log("------");
     var hitx4 = (data.object4.position[0]+data.object1.radius)>data.object1.position[0];
     //console.log(hitx4);
     var hity4t= (data.object4.position[3]+data.object1.radius)>data.object1.position[1];
@@ -188,10 +217,6 @@ var checkboundaries = function(){
         data.object1.direction[1]= -data.object1.direction[1];
         console.log("up @ "+data.object1.direction+" @ "+data.object1.position); // |``| up
     }
-   
-    
-   
-    data.object1.speed=0.00015;
     
 }
 
