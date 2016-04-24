@@ -153,25 +153,29 @@ var animate=function( time ) {
         
    
     if(data.object1.position[0]-data.object1.radius <= -1){
-        //data.object1.speed = - Math.abs(data.object1.speed);
         data.object1.direction[0]= -data.object1.direction[0];
-        console.log(" x - < 0 ");
+        
     }
     if(data.object1.position[0]+data.object1.radius >= 1){
-        //data.object1.speed = - Math.abs(data.object1.speed);
         data.object1.direction[0]= -data.object1.direction[0];
-        console.log("x + > wid");
+        
     }
     if(data.object1.position[1]-data.object1.radius <= -1){
-        //data.object1.speed = - Math.abs(data.object1.speed);
         data.object1.direction[1]= -data.object1.direction[1];
-        console.log("y - < 0");
+        
     }
     if(data.object1.position[1]+data.object1.radius >= 1){
         data.object1.direction[1]= -data.object1.direction[1];
         data.object1.speed = - Math.abs(data.object1.speed);
-        console.log("y + > hi");
+        
     }
+    if((data.object1.position[0]-data.object1.radius)==data.object4.position[4] && ((data.object1.position[1]-data.object1.radius)<=data.object4.position[1] || (data.object1.position[1]-data.object1.radius)>=data.object4.position[3]){
+        data.object1.direction[0]= -data.object1.direction[0];
+    }
+    if((data.object1.position[0]-data.object1.radius)==data.object5.position[4] && ((data.object1.position[1]-data.object1.radius)<=data.object5.position[1] || (data.object1.position[1]-data.object1.radius)>=data.object5.position[3]){
+      data.object1.direction[0]= -data.object1.direction[0];
+    }
+       
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     
