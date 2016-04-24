@@ -33,7 +33,7 @@ var dataInit= function(){
     data.object1.direction= [-0.5,0.5,0];
     // parameters for drawObject
     data.object1.position=[0,0,0];
-    data.object1.radius=0.055;
+    data.object1.radius=0.155;
     data.object1.colorRGB=[0.01, 0.9, 0.11];
     data.object1.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object1.bufferId );
@@ -152,7 +152,7 @@ var animate=function( time ) {
     
         
    
-    if(data.object1.position[0]+data.object1.radius <= -1){
+    if(data.object1.position[0]-data.object1.radius <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
                 console.log("1 @ "+data.object1.direction+" @ "+data.object1.position);
     }
@@ -160,7 +160,7 @@ var animate=function( time ) {
         data.object1.direction[0]= -data.object1.direction[0];
                 console.log("2 @ "+data.object1.direction+" @ "+data.object1.position);
     }
-    else if(data.object1.position[1]+data.object1.radius <= -1){
+    else if(data.object1.position[1]-data.object1.radius <= -1){
         data.object1.direction[1]= -data.object1.direction[1];
                         console.log("3 @ "+data.object1.direction+" @ "+data.object1.position);
     }
@@ -168,13 +168,7 @@ var animate=function( time ) {
         data.object1.direction[1]= -data.object1.direction[1];
                         console.log("4 @ "+data.object1.direction+" @ "+data.object1.position);
     }
-    if((data.object1.position[0]+data.object1.radius)<=data.object4.position[4] && ((data.object1.position[1]+data.object1.radius)<=data.object4.position[1] || (data.object1.position[1]+data.object1.radius)>=data.object4.position[3])){
-        data.object1.direction[0]= -data.object1.direction[0];
-    }
-    if((data.object1.position[0]+data.object1.radius)<=data.object5.position[4] && ((data.object1.position[1]+data.object1.radius)<=data.object5.position[1] || (data.object1.position[1]+data.object1.radius)>=data.object5.position[3])){
-      data.object1.direction[0]= -data.object1.direction[0];
-    }
-       
+    
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     
