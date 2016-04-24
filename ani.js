@@ -177,7 +177,7 @@ var checkboundaries = function(){
      -0.9 , 0.3,
      -0.9 , -0.3
      ]*/
-    if((data.object1.position[0]+data.object1.radius <= data.object4.position[4])&&((data.object1.position[1]-data.object1.radius <= data.object4.position[5])||(data.object1.position[1]-data.object1.radius <= data.object4.position[7])) ){
+    if((data.object1.position[0]-data.object1.radius <= data.object4.position[4])&&((data.object1.position[1]-data.object1.radius <= data.object4.position[5])||(data.object1.position[1]+data.object1.radius >= data.object4.position[7])) ){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("<-paletka @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
         console.log("G1: |odbijam");
