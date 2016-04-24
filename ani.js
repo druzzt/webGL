@@ -154,7 +154,7 @@ var animate=function( time ) {
    
     if(data.object1.position[0]+data.object1.radius <= data.object2.position[0]){
         data.object1.direction[0]= -data.object1.direction[0];
-        console.log("1 @ "+data.object1.direction+" @ "+data.object1.position);
+        console.log("1 @ "+data.object1.direction+" @ "+data.object1.position+" @ "+data.object4.position+" @ "+data.object4.direction);
         
     }
     else if(data.object1.position[0]+data.object1.radius >= data.object2.position[4]){
