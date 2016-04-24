@@ -188,7 +188,7 @@ var checkboundaries = function(){
    
     
    
-    data.object1.speed=0.005;
+    data.object1.speed=0.00015;
     
 }
 
