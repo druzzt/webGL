@@ -158,8 +158,8 @@ var checkboundaries = function(){
      ]*/
     var hitx4 = data.object4.position[0]-data.object1.position[0];
     //console.log(hitx4);
-    var hity4t= data.object4.position[5]-(data.object1.position[1]+data.object1.radius);
-    var hity4l= data.object4.position[7]-(data.object1.position[1]+data.object1.radius);
+    var hity4t= data.object4.position[5]-(data.object1.position[1]);
+    var hity4l= data.object4.position[7]-(data.object1.position[1]);
     console.log("x:{"+hitx4+"};  ytl:{"+hity4t+", "+hity4l+"}");
     // punkty
     if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
