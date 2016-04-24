@@ -201,16 +201,14 @@ var checkboundaries = function(){
         //console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
         data.object5.punkt+=1;
         data.object1.speed-=0.0001;
-        console.log("G2:"+data.object5.punkt);
-        document.getElementById("score1").innerHTML = data.object5.punkt;
+        console.log("G2:"+data.object5.punkt)
     }
     else if(data.object1.position[0]+data.object1.radius-0.015 >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
         //console.log("right @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
         data.object4.punkt+=1;
         data.object1.speed+=0.0001;
-        console.log("G1:"+data.object4.punkt);
-        document.getElementById("score2").innerHTML = data.object4.punkt;
+        console.log("G1:"+data.object4.punkt)
     }else if(data.object1.position[0] <= -0.9 + data.object1.radius && (data.object1.position[1] <= data.object4.position[1]+0.1 || data.object1.position[1] >= data.object4.position[3]-0.1)){
             data.object1.direction[0] = -data.object1.direction[0];
             console.log("4 hit");
