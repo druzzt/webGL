@@ -152,7 +152,6 @@ var checkboundaries = function(){
     if(data.object1.position[0]-data.object1.radius <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("<-paletka @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
-        alert("WIN");
         data.object1.position=[0,0];
         data.object1.direction=[1,0.3,0];
 
@@ -160,7 +159,6 @@ var checkboundaries = function(){
     else if(data.object1.position[0]+data.object1.radius >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("paletka-> @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
-        alert("WIN");
         data.object1.position=[0,0];
         data.object1.direction=[-1,-0.3,0];
 
