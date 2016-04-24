@@ -156,10 +156,8 @@ var checkboundaries = function(){
      -0.9 , 0.3,
      -0.9 , -0.3
      ]*/
-    if(data.object1.position[1] <= data.object4.position[5] || data.object1.position[1]>=data.object4.position[7]){
-        data.object1.direction[1]= -data.object1.direction[1];
-        console.log("paletka4");
-    }
+    var hit = data.object4.position[0]-data.object1.position[0];
+    console.log(hit);
     
     // punkty
     if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
@@ -174,6 +172,7 @@ var checkboundaries = function(){
         data.object4.punkt+=1;
         console.log("G1:"+data.object4.punkt)
     }
+    
     //sufit podloga
     if(data.object1.position[1]-data.object1.radius <= -1){
         data.object1.direction[1]= -data.object1.direction[1];
