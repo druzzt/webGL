@@ -109,7 +109,7 @@ var dataInit= function(){
                                                       0.9, -0.3,
                                                      ]) , gl.STATIC_DRAW ); // load object's shape
     data.object5.floatsPerVertex=2;
-    data.object5.NumberOfVertices=4;
+    data.object5.NumberOfVertices=2;
     data.object5.drawMode=gl.LINE_LOOP;
 
 
