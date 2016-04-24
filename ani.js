@@ -173,12 +173,12 @@ var checkboundaries = function(){
         data.object4.punkt+=1;
         console.log("G1:"+data.object4.punkt)
     }else if(data.object1.position[0] <= -0.9 + data.object1.radius){
-        if(data.object1.position[1]-data.object1.radius <= data.object4.position[1] ){
+        if(data.object1.position[1] <= data.object4.position[1] ){
             console.log("l hit");
             data.object1.direction[0]= -data.object1.direction[0];
         }
     }else if(data.object1.position[0] >= 0.9 - data.object1.radius){
-        if(data.object1.position[1]-data.object1.radius >= data.object5.position[1]){
+        if(data.object1.position[1] >= data.object5.position[1]){
             console.log("p hit");
             data.object1.direction[0]= -data.object1.direction[0];
         }
