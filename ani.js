@@ -160,7 +160,7 @@ var checkboundaries = function(){
     
     console.log("x's: "+ o4px0 + " : "+ o1px0 + " : " + o5px0);
     console.log("y's: "+ o4py1 + " : "+ o1py1 + " : " + o5py1);
-  
+    
     if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
         //console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
@@ -172,6 +172,16 @@ var checkboundaries = function(){
         //console.log("right @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
         data.object4.punkt+=1;
         console.log("G1:"+data.object4.punkt)
+    }else if(data.object1.position[0] <= -0.9 + data.object1.radius){
+        if(data.object1.position[1]-data.object1.radius <= data.object4.position[1] ){
+            console.log("l hit");
+            data.object1.direction[0]= -data.object1.direction[0];
+        }
+    }else if(data.object1.position[0] >= 0.9 - data.object1.radius){
+        if(data.object1.position[1]-data.object1.radius >= data.object5.position[1]){
+            console.log("p hit");
+            data.object1.direction[0]= -data.object1.direction[0];
+        }
     }
     
     //sufit podloga
