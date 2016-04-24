@@ -36,7 +36,7 @@ var dataInit= function(){
     // parameters for drawObject
     data.object1.position=[0,0,0];
     data.object1.radius=0.095;
-    data.object1.colorRGB=[0.01, 0.9, 0.11];
+    data.object1.colorRGB=[0.41, 0.9, 0.11];
     data.object1.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object1.bufferId );
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0,0]) , gl.STATIC_DRAW ); // load object's shape
