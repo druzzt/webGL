@@ -80,6 +80,7 @@ var dataInit= function(){
     
     //paletka1
     data.object4={};
+    data.object4.punkt= 0;
     data.object4.speed=0.0005; // ?
     data.object4.direction= [0,0,0];
     // parameters for drawObject
@@ -98,6 +99,7 @@ var dataInit= function(){
     
     //paletka2
     data.object5={};
+    data.object5.punkt=0;
     data.object5.speed=0.0005; // ?
     data.object5.direction= [0,0,0];
     // parameters for drawObject
@@ -148,27 +150,18 @@ var redraw = function() {
 
 }
 var checkboundaries = function(){
-    
-    if(data.object1.position[0]-data.object1.radius <= -1){
-        data.object1.direction[0]= -data.object1.direction[0];
-        console.log("<-paletka @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
-        console.log("WIN prawy gracz");
-        animationStop();
-    }
-    else if(data.object1.position[0]+data.object1.radius >= 1){
-        data.object1.direction[0]= -data.object1.direction[0];
-        console.log("paletka-> @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
-        console.log("WIN lewy gracz");
-        animationStop();
-    }
-    
+    // punkty
     if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
+        data.object5.punkt+=1;
+        console.log("G2:"+data.object5.punkt)
     }
     else if(data.object1.position[0]+data.object1.radius-0.015 >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("right @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
+        data.object4.punkt+=1;
+        console.log("G1:"+data.object4.punkt)
     }
     if(data.object1.position[1]-data.object1.radius <= -1){
         data.object1.direction[1]= -data.object1.direction[1];
@@ -178,6 +171,26 @@ var checkboundaries = function(){
         data.object1.direction[1]= -data.object1.direction[1];
         console.log("up @ "+data.object1.direction+" @ "+data.object1.position); // |``| up
     }
+    //odbicia
+    /*[-0.95, 0.3,
+     -0.95, -0.3,
+     -0.9 , 0.3,
+     -0.9 , -0.3
+     ]*/
+    if((data.object1.position[0]-data.object1.radius <= data.object4.position[4])&&((data.object1.position[1]-data.object1.radius <= data.object4.position[5])||(data.object1.position[1]-data.object1.radius <= data.object4.position[7])) ){
+        data.object1.direction[0]= -data.object1.direction[0];
+        console.log("<-paletka @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
+        console.log("G1: |odbijam");
+        animationStop();
+    }
+    else if(data.object1.position[0]+data.object1.radius >= 1){
+        data.object1.direction[0]= -data.object1.direction[0];
+        console.log("paletka-> @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
+        console.log("G2: odbijam|");
+        animationStop();
+    }
+    
+   
 
     
 }
