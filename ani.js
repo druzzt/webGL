@@ -165,19 +165,9 @@ var checkboundaries = function(){
         data.object4.punkt+=1;
         data.object1.speed+=0.0001;
         console.log("G1:"+data.object4.punkt)
-    }else if(data.object1.position[0] <= -0.9 + data.object1.radius){
-        console.log("1 : "+data.object1.position[1]+" : "+data.object4.position[1]);
-        if(data.object1.position[1] <= data.object4.position[1] && data.object1.position[1] >= data.object4.position[3]-0.3 ){
-            console.log("l hit");
-            data.object1.speed-=0.0001;
-            data.object1.direction[0]= -data.object1.direction[0];
-        }
-    }else if(data.object1.position[0] >= 0.9 - data.object1.radius){
-        console.log("2 : "+data.object1.position[1]+" : "+data.object4.position[1]);
-        if(data.object1.position[1] >= data.object5.position[1] && data.object1.position[1] <= data.object5.position[3]+0.3){
-            console.log("p hit");
-            data.object1.speed+=0.0001;
-            data.object1.direction[0]= -data.object1.direction[0];
+    }else if(data.object1.position[0] <= -0.9 + data.object1.radius || data.object1.position[0] >= 0.9 - data.object1.radius){
+        if(data.object1.position[1] >= data.object4.position[1]+0.3 || data.object1.position[1] <= data.object4.position[3]-0.3){
+            console.log("hit");
         }
     }
     
