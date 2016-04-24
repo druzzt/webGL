@@ -143,7 +143,7 @@ var dataInit= function(){
     data.object7.direction= [0,-1,0];
     // parameters for drawObject
     data.object7.position=[0,0,0.1];
-    data.object7.colorRGB=[0.45, 0, 0.45];
+    data.object7.colorRGB=[0.6, 0.3, 0.6];
     data.object7.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object7.bufferId );
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([ -0.4, 0.6,
@@ -153,7 +153,7 @@ var dataInit= function(){
                                                      ]) , gl.STATIC_DRAW ); // load object's shape
     data.object7.floatsPerVertex=2;
     data.object7.NumberOfVertices=4;
-    data.object7.drawMode=gl.TRIANGLE_FAN;
+    data.object7.drawMode=gl.LINES;
 
 
     
