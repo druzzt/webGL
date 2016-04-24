@@ -197,7 +197,7 @@ function doAntialias() {
  * and the WebGL state.  Calls draw() to draw the picture for the first time.
  */
 function init() {
-    dataInit();
+    //dataInit();
    document.getElementById("animatecheckbox").checked = false; // (Required for reload in firefox.)
    document.getElementById("antialiascheckbox").checked = true;
    try {
@@ -232,41 +232,6 @@ function init() {
    }
    draw();
 }
-
-var callbackOnKeyDown =function (e){
-    var code= e.which || e.keyCode;
-    switch(code)
-    {
-        case 38: // up
-        case 73: // I
-        data.object1.direction=[0,1];
-        if( data.animation.requestId == 0) animationStart();
-        break;
-        case 40: // down
-        case 75: // K
-        data.object1.direction=[0,-1];
-        if( data.animation.requestId == 0) animationStart();
-        break;
-        case 37: // left
-        case 74:// J
-        data.object1.direction=[-1,0];
-        if( data.animation.requestId == 0) animationStart();
-        break;
-        case 39:// right
-        case 76: // L
-        data.object1.direction=[1,0];
-        if( data.animation.requestId == 0) animationStart();
-        break;
-        case 32: // space
-        if( data.animation.requestId == 0) {
-            animationStart();
-        } else {
-            animationStop();
-        }
-        break;
-    }
-}
-
 
 function loadTexture(){
 	

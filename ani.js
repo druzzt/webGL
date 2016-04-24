@@ -33,6 +33,7 @@ var dataInit= function(){
     var xr = Math.random()*0.5 + 0.7;
     var yr =-( Math.random()*0.5 + 0.7);
     data.object1.direction= [xr,yr,0];
+    data.object1.lineWidther=5;
     // parameters for drawObject
     data.object1.position=[0,0,0];
     data.object1.radius=0.095;
@@ -47,6 +48,7 @@ var dataInit= function(){
     /* Static background object */
     data.object2={};
     // parameters for drawObject
+    data.object2.lineWidther=15;
     data.object2.position=[0,0, 0.7];
     data.object2.colorRGB=[0.0, 0.5, 0.5];
     data.object2.bufferId = gl.createBuffer();
@@ -62,6 +64,7 @@ var dataInit= function(){
 
     /* Static foreground object */
     data.object3={};
+    data.object3.lineWidther=5;
     // parameters for drawObject
     data.object3.position=[0,0, -0.7];
     data.object3.colorRGB=[0.5, 0.2, 0.0];
@@ -81,7 +84,8 @@ var dataInit= function(){
     //paletka1
     data.object4={};
     data.object4.punkt= 0;
-    data.object4.speed=0.0005; // ?
+    data.object4.lineWidther=10;
+    data.object4.speed=0.0002; // ?
     data.object4.direction= [0,0,0];
     // parameters for drawObject
     data.object4.position=[0,0,0.1];
@@ -97,8 +101,9 @@ var dataInit= function(){
     
     //paletka2
     data.object5={};
+    data.object5.lineWidther=10;
     data.object5.punkt=0;
-    data.object5.speed=0.0005; // ?
+    data.object5.speed=0.0002; // ?
     data.object5.direction= [0,0,0];
     // parameters for drawObject
     data.object5.position=[0,0,0.1];
@@ -123,7 +128,7 @@ var dataInit= function(){
 var drawObject=function( obj ) {
     /* draw object obj */
     gl.useProgram( glObjects.shaderProgram );
-    gl.lineWidth(3);
+    gl.lineWidth(obj.lineWidther);
     gl.enableVertexAttribArray(glObjects.aVertexPositionLocation);
     gl.bindBuffer(gl.ARRAY_BUFFER, obj.bufferId ); /* refer to the buffer */
     gl.vertexAttribPointer(glObjects.aVertexPositionLocation, obj.floatsPerVertex, gl.FLOAT, false, 0 /* stride */, 0 /*offset */);
