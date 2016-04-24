@@ -88,14 +88,12 @@ var dataInit= function(){
     data.object4.colorRGB=[0.1, 1, 0.1];
     data.object4.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object4.bufferId );
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-0.95, 0.3,
-                                                     -0.95, -0.3,
-                                                     -0.9 , 0.3,
-                                                     -0.9 , -0.3
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-0.9, 0.3,
+                                                     -0.9, -0.3,
                                                      ]) , gl.STATIC_DRAW ); // load object's shape
     data.object4.floatsPerVertex=2;
-    data.object4.NumberOfVertices=4;
-    data.object4.drawMode=gl.TRIANGLE_FAN;
+    data.object4.NumberOfVertices=2;
+    data.object4.drawMode=gl.LINE_LOOP;
     
     //paletka2
     data.object5={};
@@ -107,14 +105,12 @@ var dataInit= function(){
     data.object5.colorRGB=[0.1, 1, 0.1];
     data.object5.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object5.bufferId );
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([ 0.95, 0.3,
-                                                      0.95, -0.3,
-                                                      0.9 , 0.3,
-                                                      0.9 , -0.3
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([ 0.9, 0.3,
+                                                      0.9, -0.3,
                                                      ]) , gl.STATIC_DRAW ); // load object's shape
     data.object5.floatsPerVertex=2;
     data.object5.NumberOfVertices=4;
-    data.object5.drawMode=gl.TRIANGLE_FAN;
+    data.object5.drawMode=gl.LINE_LOOP;
 
 
     
@@ -235,22 +231,22 @@ var animate=function( time ) {
     // paletka1
     var x=  data.object4.position[0]+data.object4.direction[0]* data.object4.speed*timeDelta;
     var y=  data.object4.position[1]+data.object4.direction[1]* data.object4.speed*timeDelta;
-    var x2= data.object4.position[2]+data.object4.direction[2]* data.object4.speed*timeDelta;
-    var y3=  data.object4.position[3]+data.object4.direction[3]* data.object4.speed*timeDelta;
+    //var x2= data.object4.position[2]+data.object4.direction[2]* data.object4.speed*timeDelta;
+    //var y3=  data.object4.position[3]+data.object4.direction[3]* data.object4.speed*timeDelta;
     data.object4.position[0]= (x+3)%2 -1;
     data.object4.position[1]= (y+3)%2 -1;
-    data.object4.position[2]= (x2+3)%2 -1;
-    data.object4.position[3]= (y3+3)%2 -1;
+    //data.object4.position[2]= (x2+3)%2 -1;
+    //data.object4.position[3]= (y3+3)%2 -1;
     // paletka2
     var x=  data.object5.position[0]+data.object5.direction[0]* data.object5.speed*timeDelta;
     var y=  data.object5.position[1]+data.object5.direction[1]* data.object5.speed*timeDelta;
-    var x2= data.object5.position[2]+data.object5.direction[2]* data.object5.speed*timeDelta;
-    var y3=  data.object5.position[3]+data.object5.direction[3]* data.object5.speed*timeDelta;
+    //var x2= data.object5.position[2]+data.object5.direction[2]* data.object5.speed*timeDelta;
+    //var y3=  data.object5.position[3]+data.object5.direction[3]* data.object5.speed*timeDelta;
     
     data.object5.position[0]= (x+3)%2 -1;
     data.object5.position[1]= (y+3)%2 -1;
-    data.object5.position[2]= (x2+3)%2 -1;
-    data.object5.position[3]= (y3+3)%2 -1;
+    //data.object5.position[2]= (x2+3)%2 -1;
+    //data.object5.position[3]= (y3+3)%2 -1;
     
     redraw();
     gl.finish();
