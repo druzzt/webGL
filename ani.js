@@ -52,10 +52,10 @@ var dataInit= function(){
     data.object2.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object2.bufferId );
     gl.bufferData(gl.ARRAY_BUFFER, 
-		  new Float32Array([ -0.99,  -0.99,
-				      -0.99,  0.99,
-				      0.99,  0.99,
-				      0.99,   -0.99] ) , gl.STATIC_DRAW ); // load object's shape
+		  new Float32Array([ -0.95,  -0.95,
+				      -0.95,  0.95,
+				      0.95,  0.95,
+				      0.95,   -0.95] ) , gl.STATIC_DRAW ); // load object's shape
     data.object2.floatsPerVertex=2;
     data.object2.NumberOfVertices=4;
     data.object2.drawMode=gl.LINE_LOOP;
@@ -159,7 +159,6 @@ var checkboundaries = function(){
     if(data.object1.position[1] <= data.object4.position[5] || data.object1.position[1]>=data.object4.position[7]){
         data.object1.direction[1]= -data.object1.direction[1];
         console.log("paletka4");
-        //animationStop();
     }
     
     // punkty
@@ -175,6 +174,7 @@ var checkboundaries = function(){
         data.object4.punkt+=1;
         console.log("G1:"+data.object4.punkt)
     }
+    //sufit podloga
     if(data.object1.position[1]-data.object1.radius <= -1){
         data.object1.direction[1]= -data.object1.direction[1];
         console.log("down @ "+data.object1.direction+" @ "+data.object1.position); // |_| down
