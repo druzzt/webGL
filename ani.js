@@ -117,6 +117,25 @@ var dataInit= function(){
     data.object5.NumberOfVertices=2;
     data.object5.drawMode=gl.LINE_LOOP;
 
+    
+    data.object6={};
+    data.object6.lineWidther=30;
+    data.object6.speed=0.00005; // ?
+    data.object6.direction= [0,-1,0];
+    // parameters for drawObject
+    data.object6.position=[0,0,-0.1];
+    data.object6.colorRGB=[0.45, 0, 0.45];
+    data.object6.bufferId = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, data.object6.bufferId );
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([ -0.2, 0.3,
+                                                     -0.2, -0.3,
+                                                     0.2, -0.3,
+                                                     0.2, 0.3
+                                                     ]) , gl.STATIC_DRAW ); // load object's shape
+    data.object6.floatsPerVertex=2;
+    data.object6.NumberOfVertices=4;
+    data.object6.drawMode=gl.LINE_LOOP;
+
 
     
     /* animation */
@@ -148,6 +167,7 @@ var redraw = function() {
     drawObject(data.object3);
     drawObject(data.object4);
     drawObject(data.object5);
+    drawObject(data.object6);
 
 }
 var checkboundaries = function(){
