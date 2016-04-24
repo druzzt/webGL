@@ -33,7 +33,7 @@ var dataInit= function(){
     data.object1.direction= [-0.5,0.5,0];
     // parameters for drawObject
     data.object1.position=[0,0,0];
-    data.object1.radius=0.005;
+    data.object1.radius=0.025;
     data.object1.colorRGB=[0.01, 0.9, 0.11];
     data.object1.bufferId = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, data.object1.bufferId );
