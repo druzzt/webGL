@@ -179,12 +179,12 @@ var checkboundaries = function(){
     
     console.log(o4px0 + " : "+ o1px0 + " : " + o5px0);
     console.log(o4py1 + " : "+ o1py1 + " : " + o5py1);
-    //console.log(o4py2 + " : "+ o1py1 + " : " + o5py2);
-    console.log(o4py3 + " : "+ o1py1 + " : " + o5py3);
-    //console.log(o4py4 + " : "+ o1py1 + " : " + o5py4);
-    console.log(o4py5 + " : "+ o1py1 + " : " + o5py5);
-    //console.log(o4py6 + " : "+ o1py1 + " : " + o5py6);
-    console.log(o4py7 + " : "+ o1py1 + " : " + o5py7);
+    //console.log(o4px2 + " : "+ o1py1 + " : " + o5px2);
+    //console.log(o4py3 + " : "+ o1py1 + " : " + o5py3);
+    //console.log(o4px4 + " : "+ o1py1 + " : " + o5px4);
+    //console.log(o4py5 + " : "+ o1py1 + " : " + o5py5);
+    //console.log(o4px6 + " : "+ o1py1 + " : " + o5px6);
+    //console.log(o4py7 + " : "+ o1py1 + " : " + o5py7);
     console.log("------");
     var hitx4 = (data.object4.position[0]+data.object1.radius)>data.object1.position[0];
     //console.log(hitx4);
@@ -235,16 +235,22 @@ var animate=function( time ) {
     // paletka1
     var x=  data.object4.position[0]+data.object4.direction[0]* data.object4.speed*timeDelta;
     var y=  data.object4.position[1]+data.object4.direction[1]* data.object4.speed*timeDelta;
-    
+    var x2= data.object4.position[2]+data.object4.direction[2]* data.object4.speed*timeDelta;
+    var y3=  data.object4.position[3]+data.object4.direction[3]* data.object4.speed*timeDelta;
     data.object4.position[0]= (x+3)%2 -1;
     data.object4.position[1]= (y+3)%2 -1;
-    
+    data.object4.position[2]= (x2+3)%2 -1;
+    data.object4.position[3]= (y3+3)%2 -1;
     // paletka2
     var x=  data.object5.position[0]+data.object5.direction[0]* data.object5.speed*timeDelta;
     var y=  data.object5.position[1]+data.object5.direction[1]* data.object5.speed*timeDelta;
+    var x2= data.object5.position[2]+data.object5.direction[2]* data.object5.speed*timeDelta;
+    var y3=  data.object5.position[3]+data.object5.direction[3]* data.object5.speed*timeDelta;
     
     data.object5.position[0]= (x+3)%2 -1;
     data.object5.position[1]= (y+3)%2 -1;
+    data.object5.position[2]= (x2+3)%2 -1;
+    data.object5.position[3]= (y3+3)%2 -1;
     
     redraw();
     gl.finish();
