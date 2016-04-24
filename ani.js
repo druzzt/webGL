@@ -152,16 +152,14 @@ var checkboundaries = function(){
     if(data.object1.position[0]-data.object1.radius <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("<-paletka @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
-        data.object1.position=[0,0];
-        data.object1.direction=[1,0.3,0];
-
+        alert("WIN");
+        animationStop();
     }
     else if(data.object1.position[0]+data.object1.radius >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("paletka-> @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
-        data.object1.position=[0,0];
-        data.object1.direction=[-1,-0.3,0];
-
+        alert("WIN");
+        animationStop();
     }
     
     if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
@@ -172,7 +170,7 @@ var checkboundaries = function(){
         data.object1.direction[0]= -data.object1.direction[0];
         console.log("right @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
     }
-    else if(data.object1.position[1]-data.object1.radius <= -1){
+    if(data.object1.position[1]-data.object1.radius <= -1){
         data.object1.direction[1]= -data.object1.direction[1];
         console.log("down @ "+data.object1.direction+" @ "+data.object1.position); // |_| down
     }
