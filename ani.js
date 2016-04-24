@@ -152,19 +152,19 @@ var animate=function( time ) {
     
         
    
-    if(data.object1.position[0]+data.object1.radius <= -1){
+    if(data.object1.position[0]+data.object1.radius <= data.object2.position[0]){
         data.object1.direction[0]= -data.object1.direction[0];
         
     }
-    else if(data.object1.position[0]+data.object1.radius >= 1){
+    else if(data.object1.position[0]+data.object1.radius >= data.object2.position[4]){
         data.object1.direction[0]= -data.object1.direction[0];
         
     }
-    else if(data.object1.position[1]+data.object1.radius <= -1){
+    else if(data.object1.position[1]+data.object1.radius <= data.object2.position[1]){
         data.object1.direction[1]= -data.object1.direction[1];
         
     }
-    else if(data.object1.position[1]+data.object1.radius >= 1){
+    else if(data.object1.position[1]+data.object1.radius >= data.object2.position[3]){
         data.object1.direction[1]= -data.object1.direction[1];
         
     }
@@ -175,11 +175,11 @@ var animate=function( time ) {
       data.object1.direction[0]= -data.object1.direction[0];
     }
        
-    var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
-    var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
+    var x =  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
+    var y =  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     
-    data.object1.position[0]= (x+3)%2 -1;
-    data.object1.position[1]= (y+3)%2 -1;
+    data.object1.position[0]=x;// (x+3)%2 -1;
+    data.object1.position[1]=y;// (y+3)%2 -1;
 
     // paletka1
     var x=  data.object4.position[0]+data.object4.direction[0]* data.object4.speed*timeDelta;
