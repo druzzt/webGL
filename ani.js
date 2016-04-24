@@ -147,30 +147,38 @@ var redraw = function() {
     drawObject(data.object5);
 
 }
+var checkboundaries = function(){
+    if(data.object1.position[0]-data.object1.radius <= -1){
+        data.object1.direction[0]= -data.object1.direction[0];
+        console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
+    }
+    else if(data.object1.position[0]+data.object1.radius >= 1){
+        data.object1.direction[0]= -data.object1.direction[0];
+        console.log("right @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
+    }
+    else if(data.object1.position[1]-data.object1.radius <= -1){
+        data.object1.direction[1]= -data.object1.direction[1];
+        console.log("down @ "+data.object1.direction+" @ "+data.object1.position); // |_| down
+    }
+    else if(data.object1.position[1]+data.object1.radius >= 1){
+        data.object1.direction[1]= -data.object1.direction[1];
+        console.log("up @ "+data.object1.direction+" @ "+data.object1.position); // |``| up
+    }
+    
+    
+    if(((data.object1.position[0]-data.object1.radius) <= data.object4.position[0]) && (((data.object1.position-data.object1.radius)<=data.object4.position[3])||((data.object1.position+data.object1.radius)>=data.object4.position[1]))){
+        console.log("dotknalem paletki 1");
+        data.object1.direction[0]= -data.object1.direction[0];
+    }
+    
+}
 
 var animate=function( time ) {
     var timeDelta= time-data.animation.lastTime;
     data.animation.lastTime= time ;
     
         
-   
-    if(data.object1.position[0]-data.object1.radius <= -1){
-        data.object1.direction[0]= -data.object1.direction[0];
-        console.log("1 @ "+data.object1.direction+" @ "+data.object1.position);
-    }
-    else if(data.object1.position[0]+data.object1.radius >= 1){
-        data.object1.direction[0]= -data.object1.direction[0];
-        console.log("2 @ "+data.object1.direction+" @ "+data.object1.position);
-    }
-    else if(data.object1.position[1]-data.object1.radius <= -1){
-        data.object1.direction[1]= -data.object1.direction[1];
-        console.log("3 @ "+data.object1.direction+" @ "+data.object1.position);
-    }
-    else if(data.object1.position[1]+data.object1.radius >= 1){
-        data.object1.direction[1]= -data.object1.direction[1];
-        console.log("4 @ "+data.object1.direction+" @ "+data.object1.position);
-    }
-    
+    checkboundaries();
     var x=  data.object1.position[0]+data.object1.direction[0]* data.object1.speed*timeDelta;
     var y=  data.object1.position[1]+data.object1.direction[1]* data.object1.speed*timeDelta;
     
