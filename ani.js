@@ -155,7 +155,7 @@ var checkboundaries = function(){
         alert("WIN");
         data.object1.position=[0,0];
         data.object1.direction=[1,0.3,0];
-        animationStop();
+
     }
     else if(data.object1.position[0]+data.object1.radius >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
@@ -163,7 +163,7 @@ var checkboundaries = function(){
         alert("WIN");
         data.object1.position=[0,0];
         data.object1.direction=[-1,-0.3,0];
-        animationStop();
+
     }
     
     if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
