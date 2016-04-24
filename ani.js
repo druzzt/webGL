@@ -169,7 +169,7 @@ var animate=function( time ) {
         data.object1.speed = - Math.abs(data.object1.speed);
         
     }
-    if((data.object1.position[0]-data.object1.radius)==data.object4.position[4] && ((data.object1.position[1]-data.object1.radius)<=data.object4.position[1] || (data.object1.position[1]-data.object1.radius)>=data.object4.position[3]){
+    if((data.object1.position[0]-data.object1.radius)==data.object4.position[4] && ((data.object1.position[1]-data.object1.radius)<=data.object4.position[1] || (data.object1.position[1]-data.object1.radius)>=data.object4.position[3])){
         data.object1.direction[0]= -data.object1.direction[0];
     }
     if((data.object1.position[0]-data.object1.radius)==data.object5.position[4] && ((data.object1.position[1]-data.object1.radius)<=data.object5.position[1] || (data.object1.position[1]-data.object1.radius)>=data.object5.position[3]){
