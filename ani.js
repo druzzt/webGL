@@ -199,7 +199,7 @@ var animate=function( time ) {
     var y4=  data.object4.position[1]+data.object4.direction[1]* data.object4.speed*timeDelta;
     
     data.object4.position[0]= (x4+3)%2 -1;
-    data.object4.position[1]= data.object1.position[1];//(y4+3)%2 -1;
+    data.object4.position[1]= (y4+3)%2 -1;
 
     // paletka2
     var x5=  data.object5.position[0]+data.object5.direction[0]* data.object5.speed*timeDelta;
