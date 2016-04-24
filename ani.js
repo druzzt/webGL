@@ -170,21 +170,25 @@ var checkboundaries = function(){
         data.object1.direction[0]= -data.object1.direction[0];
         //console.log("left @ "+data.object1.direction+" @ "+data.object1.position); // || =| left
         data.object5.punkt+=1;
+        data.object1.speed-=0.0001;
         console.log("G2:"+data.object5.punkt)
     }
     else if(data.object1.position[0]+data.object1.radius-0.015 >= 1){
         data.object1.direction[0]= -data.object1.direction[0];
         //console.log("right @ "+data.object1.direction+" @ "+data.object1.position); // |= || right
         data.object4.punkt+=1;
+        data.object1.speed+=0.0001;
         console.log("G1:"+data.object4.punkt)
     }else if(data.object1.position[0] <= -0.9 + data.object1.radius){
-        if(data.object1.position[1] <= data.object4.position[1] ){
+        if(data.object1.position[1] <= data.object4.position[1] && data.object1.position[1] >= data.object4.position[3] ){
             console.log("l hit");
+            data.object1.speed-=0.0001;
             data.object1.direction[0]= -data.object1.direction[0];
         }
     }else if(data.object1.position[0] >= 0.9 - data.object1.radius){
-        if(data.object1.position[1] >= data.object5.position[1]){
+        if(data.object1.position[1] >= data.object5.position[1] && data.object1.position[1] <= data.object5.position[3]){
             console.log("p hit");
+            data.object1.speed+=0.0001;
             data.object1.direction[0]= -data.object1.direction[0];
         }
     }
