@@ -179,11 +179,11 @@ var checkboundaries = function(){
     
     console.log(o4px0 + " : "+ o1px0 + " : " + o5px0);
     console.log(o4py1 + " : "+ o1py1 + " : " + o5py1);
-    console.log(o4py2 + " : "+ o1py1 + " : " + o5py2);
+    //console.log(o4py2 + " : "+ o1py1 + " : " + o5py2);
     console.log(o4py3 + " : "+ o1py1 + " : " + o5py3);
-    console.log(o4py4 + " : "+ o1py1 + " : " + o5py4);
+    //console.log(o4py4 + " : "+ o1py1 + " : " + o5py4);
     console.log(o4py5 + " : "+ o1py1 + " : " + o5py5);
-    console.log(o4py6 + " : "+ o1py1 + " : " + o5py6);
+    //console.log(o4py6 + " : "+ o1py1 + " : " + o5py6);
     console.log(o4py7 + " : "+ o1py1 + " : " + o5py7);
     console.log("------");
     var hitx4 = (data.object4.position[0]+data.object1.radius)>data.object1.position[0];
