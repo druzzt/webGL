@@ -156,6 +156,7 @@ var checkboundaries = function(){
      -0.9 , 0.3,
      -0.9 , -0.3
      ]*/
+    data.object1.speed=0.0001;
     var hitx4 = data.object4.position[0]-data.object1.position[0];
     //console.log(hitx4);
     var hity4t= data.object4.position[5]-(data.object1.position[1]);
@@ -187,7 +188,7 @@ var checkboundaries = function(){
    
     
    
-
+    data.object1.speed=0.005;
     
 }
 
