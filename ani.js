@@ -150,6 +150,18 @@ var redraw = function() {
 
 }
 var checkboundaries = function(){
+    //odbicia
+    /*[-0.95, 0.3,
+     -0.95, -0.3,
+     -0.9 , 0.3,
+     -0.9 , -0.3
+     ]*/
+    if(data.object1.position[1] <= data.object4.position[5] || data.object1.position[1]>=data.object4.position[7]){
+        data.object1.direction[1]= -data.object1.direction[1];
+        console.log("paletka4");
+        //animationStop();
+    }
+    
     // punkty
     if(data.object1.position[0]-data.object1.radius+0.015 <= -1){
         data.object1.direction[0]= -data.object1.direction[0];
@@ -171,18 +183,7 @@ var checkboundaries = function(){
         data.object1.direction[1]= -data.object1.direction[1];
         console.log("up @ "+data.object1.direction+" @ "+data.object1.position); // |``| up
     }
-    //odbicia
-    /*[-0.95, 0.3,
-     -0.95, -0.3,
-     -0.9 , 0.3,
-     -0.9 , -0.3
-     ]*/
-    if(data.object1.position[1] <= data.object4.position[5] || data.object1.position[1]>=data.object4.position[7]){
-        data.object1.direction[0]= -data.object1.direction[0];
-        console.log("paletka4");
-        //animationStop();
-    }
-    
+   
     
    
 
