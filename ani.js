@@ -156,20 +156,20 @@ var checkboundaries = function(){
     var o4py1 = data.object4.position[1];
     var o4px2 = data.object4.position[2];
     var o4py3 = data.object4.position[3];
-    var o4px4 = data.object4.position[4];
+    /*var o4px4 = data.object4.position[4];
     var o4py5 = data.object4.position[5];
     var o4px6 = data.object4.position[6];
     var o4py7 = data.object4.position[7];
-    
+    */
     var o5px0 = data.object5.position[0];
     var o5py1 = data.object5.position[1];
     var o5px2 = data.object5.position[2];
     var o5py3 = data.object5.position[3];
-    var o5px4 = data.object5.position[4];
+    /*var o5px4 = data.object5.position[4];
     var o5py5 = data.object5.position[5];
     var o5px6 = data.object5.position[6];
     var o5py7 = data.object5.position[7];
-    
+    */
     var o1px0 = data.object1.position[0];
     var o1py1 = data.object1.position[1];
     
