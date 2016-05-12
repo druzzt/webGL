@@ -311,7 +311,7 @@ var sbx_loadCubeFaceFromCanvas= function(gl, canvas, cubeFace){
     */
     gl.activeTexture(gl.TEXTURE0+sbx_textureUnit);
     gl.bindTexture(gl.TEXTURE_CUBE_MAP, sbx_textureId);
-    gl.texImage2D( cubeFace, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas);
+    gl.texImage2D( cubeFace, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, dcanvas);
 };
 
 
